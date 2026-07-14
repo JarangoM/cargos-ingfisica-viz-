@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Agrupación de cargos — Ing. Física</title>
+<style>
+  :root {
+    color-scheme: light dark;
+    --bg: #0f1420;
+    --panel: #171d2b;
+    --panel-2: #1e2536;
+    --texto: #e8ebf3;
+    --texto-tenue: #9aa4bd;
+    --borde: #2a3348;
+    --acento: #4C6EF5;
+  }
+  @media (prefers-color-scheme: light) {
+    :root {
+      --bg: #f5f6fa;
+      --panel: #ffffff;
+      --panel-2: #eef0f6;
+      --texto: #1c2130;
+      --texto-tenue: #5b6479;
+      --borde: #dde1ec;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--texto);
+  }
+  header {
+    padding: 24px 28px 12px;
+    border-bottom: 1px solid var(--borde);
+  }
+  h1 { margin: 0 0 4px; font-size: 1.4rem; }
+  .subtitulo { color: var(--texto-tenue); font-size: 0.92rem; }
+  .resumen { margin-top: 10px; font-size: 0.85rem; color: var(--texto-tenue); }
+  .resumen strong { color: var(--texto); }
+
+  main { padding: 24px 28px 40px; position: relative; }
+
+  #vista-barras {
+    background: var(--panel);
+    border: 1px solid var(--borde);
+    border-radius: 10px;
+    padding: 16px 10px;
+    overflow-x: auto;
+  }
+
+  .etiqueta-barra { font-size: 13.5px; font-weight: 600; fill: var(--texto); }
+  .sub-etiqueta { font-size: 11px; fill: var(--texto-tenue); }
+  .valor-barra { font-size: 12.5px; fill: var(--texto-tenue); font-variant-numeric: tabular-nums; }
+  .barra { cursor: pointer; transition: filter 0.1s; }
+  .fila-barra:hover .barra { filter: brightness(1.15); }
+
+  #tooltip {
+    position: fixed;
+    display: none;
+    background: var(--panel-2);
+    border: 1px solid var(--borde);
+    color: var(--texto);
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 0.82rem;
+    pointer-events: none;
+    max-width: 320px;
+    z-index: 50;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+  }
+
+  #panel-detalle {
+    position: fixed;
+    top: 0; right: -420px;
+    width: 400px; height: 100%;
+    background: var(--panel);
+    border-left: 1px solid var(--borde);
+    transition: right 0.25s ease;
+    z-index: 40;
+    display: flex;
+    flex-direction: column;
+    box-shadow: -8px 0 24px rgba(0,0,0,0.2);
+  }
+  #panel-detalle.abierto { right: 0; }
+  #panel-detalle .encabezado-detalle {
+    padding: 18px 20px;
+    border-bottom: 1px solid var(--borde);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  #detalle-titulo { font-size: 0.95rem; font-weight: 600; }
+  #cerrar-detalle {
+    background: none; border: none; color: var(--texto-tenue);
+    font-size: 1.3rem; cursor: pointer; line-height: 1;
+  }
+  #detalle-cuerpo { overflow-y: auto; padding: 8px 20px 20px; }
+  .fila-detalle {
+    display: flex; gap: 10px; align-items: baseline;
+    padding: 7px 0; border-bottom: 1px solid var(--borde);
+    font-size: 0.87rem;
+  }
+  .conteo-detalle {
+    background: var(--panel-2); border-radius: 6px;
+    padding: 1px 8px; font-size: 0.78rem; color: var(--texto-tenue);
+    min-width: 20px; text-align: center;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Agrupación de cargos de egresados — Ingeniería Física</h1>
+  <div class="subtitulo">Cargos de experiencia laboral (cargo1 / Cargo2 / Cargo3) agrupados en 4 categorías según función y nombre.</div>
+  <div class="resumen"><strong id="total-menciones"></strong> menciones de cargo · <strong id="total-distintos"></strong> cargos distintos</div>
+</header>
+
+<main>
+  <div id="vista-barras"></div>
+</main>
+
+<div id="tooltip"></div>
+
+<div id="panel-detalle">
+  <div class="encabezado-detalle">
+    <div id="detalle-titulo"></div>
+    <button id="cerrar-detalle">&times;</button>
+  </div>
+  <div id="detalle-cuerpo"></div>
+</div>
+
+<script src="cargos_datos.js"></script>
+<script src="cargos_visualizacion.js"></script>
+</body>
+</html>
