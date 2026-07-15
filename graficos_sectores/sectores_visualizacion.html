@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sectores de empleo de egresados — Ing. Física</title>
+<style>
+  :root {
+    color-scheme: light dark;
+    --bg: #0f1420;
+    --panel: #171d2b;
+    --panel-2: #1e2536;
+    --texto: #e8ebf3;
+    --texto-tenue: #9aa4bd;
+    --borde: #2a3348;
+    --acento: #4C6EF5;
+  }
+  @media (prefers-color-scheme: light) {
+    :root {
+      --bg: #f5f6fa;
+      --panel: #ffffff;
+      --panel-2: #eef0f6;
+      --texto: #1c2130;
+      --texto-tenue: #5b6479;
+      --borde: #dde1ec;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--texto);
+    padding-bottom: 96px; /* espacio para leyenda fija */
+  }
+  header {
+    padding: 24px 28px 14px;
+    border-bottom: 1px solid var(--borde);
+  }
+  h1 { margin: 0 0 4px; font-size: 1.4rem; }
+  .subtitulo { color: var(--texto-tenue); font-size: 0.92rem; }
+
+  .barra-controles {
+    margin-top: 16px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .tabs {
+    display: inline-flex;
+    background: var(--panel-2);
+    border: 1px solid var(--borde);
+    border-radius: 9px;
+    padding: 3px;
+    gap: 3px;
+  }
+  .tab-btn {
+    border: none;
+    background: transparent;
+    color: var(--texto-tenue);
+    font-size: 0.86rem;
+    font-weight: 600;
+    padding: 7px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  .tab-btn.activo {
+    background: var(--acento);
+    color: #fff;
+  }
+
+  .control-filtro {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .control-filtro label {
+    font-size: 0.8rem;
+    color: var(--texto-tenue);
+  }
+  .control-filtro select {
+    background: var(--panel-2);
+    color: var(--texto);
+    border: 1px solid var(--borde);
+    border-radius: 8px;
+    padding: 7px 10px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    max-width: 320px;
+    cursor: pointer;
+  }
+  .control-filtro select:focus {
+    outline: 2px solid var(--acento);
+    outline-offset: 1px;
+  }
+  #btn-limpiar-filtro {
+    border: 1px solid var(--borde);
+    background: transparent;
+    color: var(--texto-tenue);
+    font-size: 0.78rem;
+    padding: 6px 10px;
+    border-radius: 7px;
+    cursor: pointer;
+    display: none;
+  }
+  #btn-limpiar-filtro.visible { display: inline-block; }
+
+  main { padding: 22px 28px 20px; }
+
+  .grupo-periodo { margin-bottom: 30px; }
+  .grupo-periodo h2 {
+    font-size: 0.98rem;
+    margin: 0 0 12px;
+    color: var(--texto);
+    border-left: 3px solid var(--acento);
+    padding-left: 10px;
+  }
+  .grupo-periodo .n-periodo {
+    color: var(--texto-tenue);
+    font-weight: 400;
+    font-size: 0.85rem;
+  }
+
+  .fila-graficos {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  @media (max-width: 900px) {
+    .fila-graficos { grid-template-columns: 1fr; }
+  }
+
+  .tarjeta-grafico {
+    background: var(--panel);
+    border: 1px solid var(--borde);
+    border-radius: 10px;
+    padding: 14px 14px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .tarjeta-grafico .titulo-grafico {
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-align: center;
+    color: var(--texto);
+    margin-bottom: 2px;
+  }
+  .tarjeta-grafico .subtitulo-grafico {
+    font-size: 0.72rem;
+    color: var(--texto-tenue);
+    margin-bottom: 8px;
+  }
+  .tarjeta-grafico.vacia {
+    justify-content: center;
+    min-height: 160px;
+    color: var(--texto-tenue);
+    font-size: 0.8rem;
+  }
+  .tarjeta-grafico .nota-ausente {
+    font-size: 0.68rem;
+    color: var(--texto-tenue);
+    margin-top: 6px;
+    font-style: italic;
+  }
+
+  .slice { cursor: pointer; transition: filter 0.1s, opacity 0.15s; transform-origin: center; }
+  .slice:hover { filter: brightness(1.12); }
+  .slice.resaltado { filter: none; }
+  .etiqueta-slice {
+    font-size: 9.5px;
+    font-weight: 700;
+    fill: #fff;
+    pointer-events: none;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.55);
+  }
+  .etiqueta-slice.resaltada {
+    font-size: 10.5px;
+    fill: var(--texto);
+    text-shadow: none;
+  }
+  .fondo-etiqueta {
+    fill: var(--panel);
+    stroke: var(--borde);
+    stroke-width: 1;
+    pointer-events: none;
+  }
+  .linea-guia {
+    stroke: var(--texto-tenue);
+    stroke-width: 1;
+    fill: none;
+    pointer-events: none;
+  }
+
+  #tooltip {
+    position: fixed;
+    display: none;
+    background: var(--panel-2);
+    border: 1px solid var(--borde);
+    color: var(--texto);
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 0.82rem;
+    pointer-events: none;
+    max-width: 320px;
+    z-index: 60;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+  }
+  #tooltip .tt-sector { font-weight: 700; }
+  #tooltip .tt-cat { color: var(--texto-tenue); font-size: 0.75rem; }
+
+  #leyenda-fija {
+    position: fixed;
+    left: 0; right: 0; bottom: 0;
+    background: var(--panel);
+    border-top: 1px solid var(--borde);
+    padding: 10px 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 18px;
+    justify-content: center;
+    align-items: center;
+    z-index: 50;
+    box-shadow: 0 -6px 18px rgba(0,0,0,0.18);
+  }
+  .item-leyenda {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.78rem;
+    color: var(--texto);
+    padding: 3px 7px;
+    border-radius: 6px;
+    transition: opacity 0.15s, background 0.15s;
+  }
+  .item-leyenda .punto {
+    width: 11px; height: 11px;
+    border-radius: 3px;
+    flex-shrink: 0;
+  }
+  #leyenda-fija.filtro-activo .item-leyenda {
+    opacity: 0.4;
+  }
+  #leyenda-fija.filtro-activo .item-leyenda.seleccionado {
+    opacity: 1;
+    background: var(--panel-2);
+    font-weight: 700;
+  }
+  #leyenda-fija.filtro-activo .item-leyenda.seleccionado .punto {
+    box-shadow: 0 0 0 2px var(--acento);
+  }
+  .leyenda-etiqueta {
+    font-size: 0.7rem;
+    color: var(--texto-tenue);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-right: 4px;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Sectores de empleo de los egresados — Ingeniería Física</h1>
+  <div class="subtitulo">Distribución por sector de la empresa/entidad empleadora, para el primer, segundo y tercer trabajo reportado, por periodo de graduación.</div>
+  <div class="barra-controles">
+    <div class="tabs">
+      <button class="tab-btn" data-ambito="nacional">Nacional</button>
+      <button class="tab-btn" data-ambito="internacional">Internacional</button>
+    </div>
+    <div class="control-filtro">
+      <label for="filtro-sector">Centrar en sector:</label>
+      <select id="filtro-sector">
+        <option value="">Todos los sectores</option>
+      </select>
+    </div>
+    <button id="btn-limpiar-filtro" type="button">Quitar filtro ✕</button>
+  </div>
+</header>
+
+<main id="contenedor-principal"></main>
+
+<div id="tooltip"></div>
+
+<div id="leyenda-fija"></div>
+
+<script src="sectores_datos.js"></script>
+<script src="sectores_visualizacion.js"></script>
+</body>
+</html>
