@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cargos más comunes por grupo — Ing. Física</title>
+<style>
+  :root {
+    color-scheme: light dark;
+    --bg: #0f1420;
+    --panel: #171d2b;
+    --panel-2: #1e2536;
+    --texto: #e8ebf3;
+    --texto-tenue: #9aa4bd;
+    --borde: #2a3348;
+    --acento: #4C6EF5;
+  }
+  @media (prefers-color-scheme: light) {
+    :root {
+      --bg: #f5f6fa;
+      --panel: #ffffff;
+      --panel-2: #eef0f6;
+      --texto: #1c2130;
+      --texto-tenue: #5b6479;
+      --borde: #dde1ec;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--texto);
+  }
+  header {
+    padding: 24px 28px 14px;
+    border-bottom: 1px solid var(--borde);
+  }
+  h1 { margin: 0 0 4px; font-size: 1.4rem; }
+  .subtitulo { color: var(--texto-tenue); font-size: 0.92rem; }
+
+  main { padding: 24px 28px 40px; }
+
+  .fila-grupos {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+  @media (max-width: 1100px) {
+    .fila-grupos { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 620px) {
+    .fila-grupos { grid-template-columns: 1fr; }
+  }
+
+  .tarjeta-grupo {
+    background: var(--panel);
+    border: 1px solid var(--borde);
+    border-top: 3px solid var(--color-grupo);
+    border-radius: 10px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+  }
+  .encabezado-tarjeta { margin-bottom: 10px; }
+  .titulo-grupo { font-size: 0.95rem; font-weight: 700; }
+  .subtitulo-grupo { font-size: 0.76rem; color: var(--texto-tenue); margin-top: 2px; }
+
+  .cuerpo-tarjeta { display: flex; flex-direction: column; align-items: center; gap: 12px; }
+  .pie-svg { flex-shrink: 0; }
+
+  .leyenda-grupo { width: 100%; display: flex; flex-direction: column; gap: 2px; }
+  .fila-leyenda {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 6px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.78rem;
+  }
+  .fila-leyenda:hover { background: var(--panel-2); }
+  .fila-leyenda.es-otros { font-style: italic; color: var(--texto-tenue); border-top: 1px dashed var(--borde); margin-top: 4px; padding-top: 8px; }
+  .punto-leyenda { width: 10px; height: 10px; border-radius: 3px; flex-shrink: 0; }
+  .nombre-leyenda { flex: 1; }
+  .valor-leyenda { color: var(--texto-tenue); font-variant-numeric: tabular-nums; }
+
+  .leyenda-grupo.filtro-activo .fila-leyenda { opacity: 0.45; }
+  .leyenda-grupo.filtro-activo .fila-leyenda.seleccionado {
+    opacity: 1;
+    background: var(--panel-2);
+    font-weight: 700;
+  }
+  .leyenda-grupo.filtro-activo .fila-leyenda.seleccionado .punto-leyenda {
+    box-shadow: 0 0 0 2px var(--color-grupo);
+  }
+
+  .slice { cursor: pointer; transition: filter 0.1s, opacity 0.15s, transform 0.15s; transform-origin: center; }
+  .slice:hover { filter: brightness(1.15); }
+  .slice.resaltado { filter: none; }
+  .etiqueta-slice {
+    font-size: 10px;
+    font-weight: 700;
+    fill: #fff;
+    pointer-events: none;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.55);
+  }
+  .etiqueta-slice.resaltada { font-size: 11px; }
+
+  #tooltip {
+    position: fixed;
+    display: none;
+    background: var(--panel-2);
+    border: 1px solid var(--borde);
+    color: var(--texto);
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 0.82rem;
+    pointer-events: none;
+    max-width: 320px;
+    z-index: 60;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+  }
+  #tooltip .tt-cargo { font-weight: 700; }
+  #tooltip .tt-cat { color: var(--texto-tenue); font-size: 0.75rem; margin-top: 2px; }
+
+  #panel-detalle {
+    position: fixed;
+    top: 0; right: -420px;
+    width: 400px; height: 100%;
+    background: var(--panel);
+    border-left: 1px solid var(--borde);
+    transition: right 0.25s ease;
+    z-index: 40;
+    display: flex;
+    flex-direction: column;
+    box-shadow: -8px 0 24px rgba(0,0,0,0.2);
+  }
+  #panel-detalle.abierto { right: 0; }
+  #panel-detalle .encabezado-detalle {
+    padding: 18px 20px;
+    border-bottom: 1px solid var(--borde);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  #detalle-titulo { font-size: 0.95rem; font-weight: 600; }
+  #cerrar-detalle {
+    background: none; border: none; color: var(--texto-tenue);
+    font-size: 1.3rem; cursor: pointer; line-height: 1;
+  }
+  #detalle-cuerpo { overflow-y: auto; padding: 8px 20px 20px; }
+  .fila-detalle {
+    display: flex; gap: 10px; align-items: baseline;
+    padding: 7px 0; border-bottom: 1px solid var(--borde);
+    font-size: 0.87rem;
+  }
+  .conteo-detalle {
+    background: var(--panel-2); border-radius: 6px;
+    padding: 1px 8px; font-size: 0.78rem; color: var(--texto-tenue);
+    min-width: 20px; text-align: center; font-variant-numeric: tabular-nums;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .slice, #panel-detalle { transition: none; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Cargos más comunes por grupo — Ingeniería Física</h1>
+  <div class="subtitulo">Cargos agrupados por función (palabra clave del cargo: ingeniero, investigador, asistente, analista, etc.) dentro de cada una de las 4 categorías. Clic en cualquier porción para ver los cargos originales que la componen.</div>
+</header>
+
+<main id="contenedor-principal"></main>
+
+<div id="tooltip"></div>
+
+<div id="panel-detalle">
+  <div class="encabezado-detalle">
+    <div id="detalle-titulo"></div>
+    <button id="cerrar-detalle" aria-label="Cerrar panel de detalle">&times;</button>
+  </div>
+  <div id="detalle-cuerpo"></div>
+</div>
+
+<script src="cargos_torta_datos.js"></script>
+<script src="cargos_torta_visualizacion.js"></script>
+</body>
+</html>
