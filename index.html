@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Observatorio de trayectorias — Egresados Ingeniería Física</title>
+<meta name="description" content="Visualizaciones interactivas sobre la experiencia laboral de los egresados de Ingeniería Física: cargos, sectores y funciones.">
+<style>
+  :root {
+    --bg: #05070f;
+    --bg-2: #0b1020;
+    --bg-3: #0f1530;
+    --line: #1e2748;
+    --ink: #eef1fb;
+    --ink-dim: #7c87ac;
+    --star: #f2c14e;
+    --star-dim: #8a6a2c;
+  }
+  * { box-sizing: border-box; }
+  html { color-scheme: dark; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: ui-sans-serif, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  .mono {
+    font-family: ui-monospace, "Cascadia Code", "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  }
+
+  /* ── Fondo: campo de estrellas + grilla cartesiana + arco orbital ──────── */
+  .campo-estelar {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background-image:
+      radial-gradient(1.6px 1.6px at 7% 12%, #ffffff 100%, transparent 100%),
+      radial-gradient(1.2px 1.2px at 15% 34%, #ffffff 100%, transparent 100%),
+      radial-gradient(1.8px 1.8px at 23% 8%, #ffffff 100%, transparent 100%),
+      radial-gradient(1.2px 1.2px at 31% 62%, #ffffff 100%, transparent 100%),
+      radial-gradient(1.4px 1.4px at 42% 22%, #ffffff 100%, transparent 100%),
+      radial-gradient(1.1px 1.1px at 52% 48%, #ffffff 100%, transparent 100%),
+      radial-gradient(1.7px 1.7px at 61% 15%, #ffffff 100%, transparent 100%),
+      radial-gradient(1.2px 1.2px at 68% 71%, #ffffff 100%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 77% 28%, #ffffff 100%, transparent 100%),
+      radial-gradient(1.1px 1.1px at 85% 55%, #ffffff 100%, transparent 100%),
+      radial-gradient(1.9px 1.9px at 91% 18%, #ffffff 100%, transparent 100%),
+      radial-gradient(1.2px 1.2px at 96% 64%, #ffffff 100%, transparent 100%),
+      radial-gradient(1.3px 1.3px at 12% 82%, #ffffff 100%, transparent 100%),
+      radial-gradient(1.1px 1.1px at 27% 91%, #ffffff 100%, transparent 100%),
+      radial-gradient(1.6px 1.6px at 45% 87%, #ffffff 100%, transparent 100%),
+      radial-gradient(1.2px 1.2px at 58% 94%, #ffffff 100%, transparent 100%),
+      radial-gradient(1.4px 1.4px at 73% 89%, #ffffff 100%, transparent 100%),
+      radial-gradient(1.1px 1.1px at 88% 86%, #ffffff 100%, transparent 100%),
+      radial-gradient(1.3px 1.3px at 5% 55%, #ffffff 100%, transparent 100%),
+      radial-gradient(1.1px 1.1px at 37% 40%, #ffffff 100%, transparent 100%);
+    background-repeat: no-repeat;
+    opacity: 0.55;
+  }
+  .estrella-brillante {
+    position: fixed;
+    border-radius: 50%;
+    background: var(--star);
+    box-shadow: 0 0 6px 1px var(--star);
+    z-index: 0;
+    pointer-events: none;
+    animation: parpadeo 4.5s ease-in-out infinite;
+  }
+  @keyframes parpadeo {
+    0%, 100% { opacity: 0.35; }
+    50% { opacity: 1; }
+  }
+  .grilla-cartesiana {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background-image:
+      linear-gradient(to right, rgba(255,255,255,0.035) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255,255,255,0.035) 1px, transparent 1px);
+    background-size: 42px 42px;
+    mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 0%, transparent 70%);
+    -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 0%, transparent 70%);
+  }
+  .arco-orbital {
+    position: fixed;
+    top: -420px;
+    right: -320px;
+    width: 900px;
+    height: 900px;
+    border-radius: 50%;
+    border: 1px solid rgba(242, 193, 78, 0.14);
+    z-index: 0;
+    pointer-events: none;
+  }
+  .arco-orbital::before {
+    content: "";
+    position: absolute;
+    inset: 70px;
+    border-radius: 50%;
+    border: 1px solid rgba(242, 193, 78, 0.08);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .estrella-brillante { animation: none; opacity: 0.75; }
+  }
+
+  /* ── Layout general ──────────────────────────────────────────────────── */
+  .envoltorio { position: relative; z-index: 1; max-width: 1080px; margin: 0 auto; padding: 0 28px; }
+
+  header.hero { padding: 88px 0 56px; }
+  .eyebrow {
+    font-size: 0.74rem;
+    letter-spacing: 0.16em;
+    color: var(--star);
+    text-transform: uppercase;
+    margin: 0 0 18px;
+  }
+  .eyebrow::before { content: "◦ "; }
+  h1 {
+    margin: 0 0 20px;
+    font-size: clamp(2.1rem, 4.4vw, 3.4rem);
+    line-height: 1.08;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+    max-width: 16ch;
+  }
+  h1 em {
+    font-style: normal;
+    color: var(--star);
+  }
+  .intro {
+    max-width: 62ch;
+    color: var(--ink-dim);
+    font-size: 1.05rem;
+    line-height: 1.65;
+  }
+  .coordenadas {
+    margin-top: 28px;
+    display: flex;
+    gap: 28px;
+    flex-wrap: wrap;
+    font-size: 0.76rem;
+    color: var(--ink-dim);
+  }
+  .coordenadas span b { color: var(--ink); font-weight: 600; }
+
+  /* ── Grid de tarjetas ────────────────────────────────────────────────── */
+  main { padding-bottom: 100px; }
+  .rejilla {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+  }
+  @media (max-width: 900px) {
+    .rejilla { grid-template-columns: 1fr; }
+  }
+
+  .tarjeta {
+    display: block;
+    background: var(--bg-2);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+  }
+  .tarjeta:hover, .tarjeta:focus-visible {
+    transform: translateY(-4px);
+    border-color: rgba(242, 193, 78, 0.55);
+    box-shadow: 0 16px 40px -16px rgba(242, 193, 78, 0.25), 0 0 0 1px rgba(242, 193, 78, 0.08);
+  }
+  .tarjeta:focus-visible { outline: 2px solid var(--star); outline-offset: 3px; }
+
+  .miniatura {
+    background: var(--bg-3);
+    border-bottom: 1px solid var(--line);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 18px 0;
+  }
+  .miniatura svg { display: block; }
+
+  .cuerpo-tarjeta { padding: 20px 22px 24px; }
+  .reg { font-size: 0.68rem; letter-spacing: 0.1em; color: var(--star-dim); margin: 0 0 10px; }
+  .titulo-tarjeta { font-size: 1.08rem; font-weight: 700; margin: 0 0 8px; letter-spacing: -0.005em; }
+  .desc-tarjeta { font-size: 0.87rem; color: var(--ink-dim); line-height: 1.55; margin: 0 0 16px; }
+  .stat-tarjeta {
+    font-size: 0.72rem;
+    color: var(--ink-dim);
+    border-top: 1px dashed var(--line);
+    padding-top: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .cta { color: var(--star); font-weight: 600; }
+  .tarjeta:hover .cta, .tarjeta:focus-visible .cta { text-decoration: underline; }
+
+  footer {
+    position: relative;
+    z-index: 1;
+    border-top: 1px solid var(--line);
+    padding: 26px 0 40px;
+  }
+  footer .envoltorio {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    font-size: 0.78rem;
+    color: var(--ink-dim);
+  }
+  footer a { color: var(--ink-dim); }
+  footer a:hover { color: var(--star); }
+</style>
+</head>
+<body>
+
+<div class="campo-estelar" aria-hidden="true"></div>
+<div class="grilla-cartesiana" aria-hidden="true"></div>
+<div class="arco-orbital" aria-hidden="true"></div>
+<div class="estrella-brillante" style="left:18%; top:14%; width:3px; height:3px; animation-delay:0s;" aria-hidden="true"></div>
+<div class="estrella-brillante" style="left:64%; top:9%; width:2px; height:2px; animation-delay:1.6s;" aria-hidden="true"></div>
+<div class="estrella-brillante" style="left:81%; top:24%; width:3px; height:3px; animation-delay:3s;" aria-hidden="true"></div>
+<div class="estrella-brillante" style="left:36%; top:6%; width:2px; height:2px; animation-delay:2.2s;" aria-hidden="true"></div>
+
+<div class="envoltorio">
+  <header class="hero">
+    <p class="eyebrow mono">Ingeniería Física · EAFIT</p>
+    <h1>Observatorio de <em>trayectorias</em> de los egresados</h1>
+    <p class="intro">Un registro interactivo de hacia dónde se dirigen los egresados del programa después de graduarse: qué cargos ocupan, en qué sectores trabajan y cómo se agrupan esas funciones a lo largo del tiempo.</p>
+    <div class="coordenadas mono">
+      <span><b>3</b> visualizaciones</span>
+      <span><b>187</b> egresados con experiencia registrada</span>
+      <span><b>2009 – 2025</b> periodo cubierto</span>
+    </div>
+  </header>
+
+  <main>
+    <div class="rejilla">
+
+      <a class="tarjeta" href="v2/cargos_visualizacion.html" target="_blank" rel="noopener">
+        <div class="miniatura">
+          <svg width="220" height="140" viewBox="0 0 220 140">
+            <line x1="20" y1="18" x2="20" y2="122" stroke="var(--line)" stroke-width="1"/>
+            <line x1="20" y1="122" x2="204" y2="122" stroke="var(--line)" stroke-width="1"/>
+            <rect x="24" y="24" width="176" height="14" rx="4" fill="#4C6EF5"/>
+            <rect x="24" y="48" width="127" height="14" rx="4" fill="#BE4BDB"/>
+            <rect x="24" y="72" width="79" height="14" rx="4" fill="#12B886"/>
+            <rect x="24" y="96" width="55" height="14" rx="4" fill="#F76707"/>
+          </svg>
+        </div>
+        <div class="cuerpo-tarjeta">
+          <p class="reg mono">REG. 01 — BARRAS</p>
+          <h2 class="titulo-tarjeta">Agrupación de cargos de egresados</h2>
+          <p class="desc-tarjeta">Los cargos reportados, clasificados en 4 grandes categorías según su función: investigación y academia, ingeniería, datos/software/IA, y gestión y negocios.</p>
+          <div class="stat-tarjeta">
+            <span>331 menciones · 4 categorías</span>
+            <span class="cta">Ver visualización →</span>
+          </div>
+        </div>
+      </a>
+
+      <a class="tarjeta" href="graficos_sectores/sectores_visualizacion.html" target="_blank" rel="noopener">
+        <div class="miniatura">
+          <svg width="140" height="140" viewBox="0 0 180 180">
+            <circle cx="90" cy="90" r="76" fill="none" stroke="rgba(242,193,78,0.10)" stroke-width="1"/>
+            <g transform="rotate(-90 90 90)">
+              <circle cx="90" cy="90" r="58" fill="none" stroke="#f2c14e" stroke-width="24" stroke-dasharray="72.88 291.54" stroke-dashoffset="0"/>
+              <circle cx="90" cy="90" r="58" fill="none" stroke="#4C6EF5" stroke-width="24" stroke-dasharray="58.31 306.12" stroke-dashoffset="-72.88"/>
+              <circle cx="90" cy="90" r="58" fill="none" stroke="#12B886" stroke-width="24" stroke-dasharray="51.02 313.41" stroke-dashoffset="-131.19"/>
+              <circle cx="90" cy="90" r="58" fill="none" stroke="#F76707" stroke-width="24" stroke-dasharray="43.73 320.69" stroke-dashoffset="-182.21"/>
+              <circle cx="90" cy="90" r="58" fill="none" stroke="#BE4BDB" stroke-width="24" stroke-dasharray="40.09 324.34" stroke-dashoffset="-225.94"/>
+              <circle cx="90" cy="90" r="58" fill="none" stroke="#22b8cf" stroke-width="24" stroke-dasharray="36.44 327.98" stroke-dashoffset="-266.03"/>
+              <circle cx="90" cy="90" r="58" fill="none" stroke="#f06595" stroke-width="24" stroke-dasharray="32.80 331.63" stroke-dashoffset="-302.47"/>
+              <circle cx="90" cy="90" r="58" fill="none" stroke="#fa5252" stroke-width="24" stroke-dasharray="29.15 335.27" stroke-dashoffset="-335.27"/>
+            </g>
+            <circle cx="90" cy="90" r="46" fill="var(--bg-3)"/>
+          </svg>
+        </div>
+        <div class="cuerpo-tarjeta">
+          <p class="reg mono">REG. 02 — SECTORES</p>
+          <h2 class="titulo-tarjeta">Sectores de empleo de los egresados</h2>
+          <p class="desc-tarjeta">A qué sector pertenece la empresa o entidad empleadora del primer, segundo y tercer trabajo reportado, comparado por periodo de graduación y ámbito nacional/internacional.</p>
+          <div class="stat-tarjeta">
+            <span>24 gráficos · 2009–2025</span>
+            <span class="cta">Ver visualización →</span>
+          </div>
+        </div>
+      </a>
+
+      <a class="tarjeta" href="v2/visualizacion%20distribucion%20de%20cargos/cargos_torta_visualizacion.html" target="_blank" rel="noopener">
+        <div class="miniatura">
+          <svg width="220" height="90" viewBox="0 0 220 90">
+            <g transform="rotate(-90 40 45)">
+              <circle cx="40" cy="45" r="11" fill="none" stroke="#16218f" stroke-width="22" stroke-dasharray="42.85 26.26" stroke-dashoffset="0"/>
+              <circle cx="40" cy="45" r="11" fill="none" stroke="#aebbfb" stroke-width="22" stroke-dasharray="26.26 42.85" stroke-dashoffset="-42.85"/>
+            </g>
+            <g transform="rotate(-90 110 45)">
+              <circle cx="110" cy="45" r="11" fill="none" stroke="#075c45" stroke-width="22" stroke-dasharray="48.38 20.73" stroke-dashoffset="0"/>
+              <circle cx="110" cy="45" r="11" fill="none" stroke="#8fe8d0" stroke-width="22" stroke-dasharray="20.73 48.38" stroke-dashoffset="-48.38"/>
+            </g>
+            <g transform="rotate(-90 180 45)">
+              <circle cx="180" cy="45" r="11" fill="none" stroke="#8a3d02" stroke-width="22" stroke-dasharray="38.01 31.10" stroke-dashoffset="0"/>
+              <circle cx="180" cy="45" r="11" fill="none" stroke="#fcc89a" stroke-width="22" stroke-dasharray="31.10 38.01" stroke-dashoffset="-38.01"/>
+            </g>
+          </svg>
+        </div>
+        <div class="cuerpo-tarjeta">
+          <p class="reg mono">REG. 03 — FUNCIONES</p>
+          <h2 class="titulo-tarjeta">Cargos más comunes por grupo</h2>
+          <p class="desc-tarjeta">Dentro de cada una de las 4 categorías, los cargos se agrupan por función (ingenieros/as, investigadores/as, analistas...) para ver de un vistazo qué rol predomina en cada una.</p>
+          <div class="stat-tarjeta">
+            <span>28 funciones agrupadas</span>
+            <span class="cta">Ver visualización →</span>
+          </div>
+        </div>
+      </a>
+
+    </div>
+  </main>
+</div>
+
+<footer>
+  <div class="envoltorio">
+    <span>Datos de experiencia laboral — egresados de Ingeniería Física, Universidad EAFIT.</span>
+    <a href="https://github.com/JarangoM/cargos-ingfisica-viz-" target="_blank" rel="noopener">Ver repositorio en GitHub ↗</a>
+  </div>
+</footer>
+
+</body>
+</html>
