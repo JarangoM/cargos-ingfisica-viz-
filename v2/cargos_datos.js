@@ -1,52 +1,72 @@
 // Generado automáticamente desde ing_fisica.ipynb — no editar a mano.
 const CARGOS_DATA = {
-  "total_menciones": 331,
+  "total_menciones": 457,
   "grupos": [
     {
       "id": "Investigación y academia",
       "nombre": "Investigación y academia",
-      "conteo": 146,
+      "conteo": 193,
       "color": "#4C6EF5"
     },
     {
       "id": "Datos, software e IA",
       "nombre": "Datos, software e IA",
-      "conteo": 88,
+      "conteo": 113,
       "color": "#12B886"
-    },
-    {
-      "id": "Ingeniería",
-      "nombre": "Ingeniería",
-      "conteo": 57,
-      "color": "#F76707"
     },
     {
       "id": "Gestión y Negocios",
       "nombre": "Gestión y Negocios",
-      "conteo": 40,
+      "conteo": 81,
       "color": "#BE4BDB"
+    },
+    {
+      "id": "Ingeniería",
+      "nombre": "Ingeniería",
+      "conteo": 70,
+      "color": "#F76707"
     }
   ],
   "cargos": [
     {
-      "cargo": "Asistente de Investigación",
+      "cargo": "Asistente de investigación",
       "grupo": "Investigación y academia",
-      "conteo": 16
+      "conteo": 28
     },
     {
       "cargo": "Investigador",
       "grupo": "Investigación y academia",
-      "conteo": 8
+      "conteo": 11
+    },
+    {
+      "cargo": "Científico de datos",
+      "grupo": "Datos, software e IA",
+      "conteo": 10
     },
     {
       "cargo": "Practicante de Investigación",
       "grupo": "Investigación y academia",
+      "conteo": 9
+    },
+    {
+      "cargo": "Analista de datos",
+      "grupo": "Datos, software e IA",
       "conteo": 7
     },
     {
-      "cargo": "Asistente de investigación",
+      "cargo": "Investigador Joven",
       "grupo": "Investigación y academia",
-      "conteo": 7
+      "conteo": 6
+    },
+    {
+      "cargo": "Investigador Postdoctoral",
+      "grupo": "Investigación y academia",
+      "conteo": 5
+    },
+    {
+      "cargo": "Estudiante de Doctorado",
+      "grupo": "Investigación y academia",
+      "conteo": 5
     },
     {
       "cargo": "Practicante",
@@ -59,8 +79,18 @@ const CARGOS_DATA = {
       "conteo": 5
     },
     {
+      "cargo": "Ingeniero de datos",
+      "grupo": "Datos, software e IA",
+      "conteo": 5
+    },
+    {
       "cargo": "Ingeniero de Investigación y Desarrollo",
       "grupo": "Ingeniería",
+      "conteo": 4
+    },
+    {
+      "cargo": "Profesor",
+      "grupo": "Investigación y academia",
       "conteo": 4
     },
     {
@@ -69,17 +99,22 @@ const CARGOS_DATA = {
       "conteo": 4
     },
     {
-      "cargo": "Investigador Joven",
+      "cargo": "Asistente de Investigación de Posgrado",
       "grupo": "Investigación y academia",
       "conteo": 4
     },
     {
-      "cargo": "Practicante de Ingeniería",
-      "grupo": "Ingeniería",
+      "cargo": "Asistente de laboratorio",
+      "grupo": "Investigación y academia",
       "conteo": 4
     },
     {
-      "cargo": "Asistente de Investigación de Posgrado",
+      "cargo": "Desarrollador de software",
+      "grupo": "Datos, software e IA",
+      "conteo": 4
+    },
+    {
+      "cargo": "Estudiante investigador",
       "grupo": "Investigación y academia",
       "conteo": 3
     },
@@ -99,17 +134,12 @@ const CARGOS_DATA = {
       "conteo": 3
     },
     {
-      "cargo": "Científico de datos",
-      "grupo": "Datos, software e IA",
+      "cargo": "Practicante de Ingeniería",
+      "grupo": "Ingeniería",
       "conteo": 3
     },
     {
-      "cargo": "Científico de Datos",
-      "grupo": "Datos, software e IA",
-      "conteo": 3
-    },
-    {
-      "cargo": "Analista de datos",
+      "cargo": "Ingeniero de DevOps y Software",
       "grupo": "Datos, software e IA",
       "conteo": 3
     },
@@ -124,22 +154,27 @@ const CARGOS_DATA = {
       "conteo": 3
     },
     {
-      "cargo": "Profesor",
-      "grupo": "Investigación y academia",
-      "conteo": 2
-    },
-    {
       "cargo": "Investigación",
       "grupo": "Investigación y academia",
       "conteo": 2
     },
     {
-      "cargo": "Aprendiz en Práctica",
+      "cargo": "Assistant Professor",
       "grupo": "Investigación y academia",
       "conteo": 2
     },
     {
-      "cargo": "Asistente de Laboratorio",
+      "cargo": "Investigador de Doctorado",
+      "grupo": "Investigación y academia",
+      "conteo": 2
+    },
+    {
+      "cargo": "Profesora",
+      "grupo": "Investigación y academia",
+      "conteo": 2
+    },
+    {
+      "cargo": "Aprendiz en Práctica",
       "grupo": "Investigación y academia",
       "conteo": 2
     },
@@ -154,22 +189,17 @@ const CARGOS_DATA = {
       "conteo": 2
     },
     {
+      "cargo": "Candidato a Doctorado",
+      "grupo": "Investigación y academia",
+      "conteo": 2
+    },
+    {
       "cargo": "Ingeniero",
       "grupo": "Ingeniería",
       "conteo": 2
     },
     {
-      "cargo": "Asistente de laboratorio",
-      "grupo": "Investigación y academia",
-      "conteo": 2
-    },
-    {
       "cargo": "Doctorando CIFRE",
-      "grupo": "Investigación y academia",
-      "conteo": 2
-    },
-    {
-      "cargo": "Estudiante de Doctorado",
       "grupo": "Investigación y academia",
       "conteo": 2
     },
@@ -179,23 +209,8 @@ const CARGOS_DATA = {
       "conteo": 2
     },
     {
-      "cargo": "Desarrollador de Software",
-      "grupo": "Datos, software e IA",
-      "conteo": 2
-    },
-    {
-      "cargo": "Ingeniero de DevOps y Software",
-      "grupo": "Datos, software e IA",
-      "conteo": 2
-    },
-    {
       "cargo": "Consultor",
       "grupo": "Gestión y Negocios",
-      "conteo": 2
-    },
-    {
-      "cargo": "Estudiante investigador",
-      "grupo": "Investigación y academia",
       "conteo": 2
     },
     {
@@ -214,12 +229,12 @@ const CARGOS_DATA = {
       "conteo": 2
     },
     {
-      "cargo": "Ingeniero de Datos",
-      "grupo": "Datos, software e IA",
+      "cargo": "Consultor Junior",
+      "grupo": "Gestión y Negocios",
       "conteo": 2
     },
     {
-      "cargo": "Consultor Junior",
+      "cargo": "Descanso profesional",
       "grupo": "Gestión y Negocios",
       "conteo": 2
     },
@@ -239,28 +254,23 @@ const CARGOS_DATA = {
       "conteo": 2
     },
     {
-      "cargo": "Analista de Datos",
-      "grupo": "Datos, software e IA",
-      "conteo": 2
-    },
-    {
       "cargo": "Practicante",
       "grupo": "Ingeniería",
       "conteo": 2
     },
     {
-      "cargo": "Interno",
+      "cargo": "Mentor de Tecnología",
+      "grupo": "Datos, software e IA",
+      "conteo": 1
+    },
+    {
+      "cargo": "Aerospace Engineering Intern",
       "grupo": "Ingeniería",
       "conteo": 1
     },
     {
-      "cargo": "Asistencia de Investigación",
-      "grupo": "Investigación y academia",
-      "conteo": 1
-    },
-    {
-      "cargo": "Mentor de Tecnología",
-      "grupo": "Datos, software e IA",
+      "cargo": "interna",
+      "grupo": "Gestión y Negocios",
       "conteo": 1
     },
     {
@@ -270,6 +280,11 @@ const CARGOS_DATA = {
     },
     {
       "cargo": "Instructor de Física y Matemáticas (Pregrado)",
+      "grupo": "Investigación y academia",
+      "conteo": 1
+    },
+    {
+      "cargo": "profesor",
       "grupo": "Investigación y academia",
       "conteo": 1
     },
@@ -284,7 +299,7 @@ const CARGOS_DATA = {
       "conteo": 1
     },
     {
-      "cargo": "Investigador Postdoctoral",
+      "cargo": "Académico Visitante Fulbright",
       "grupo": "Investigación y academia",
       "conteo": 1
     },
@@ -294,7 +309,7 @@ const CARGOS_DATA = {
       "conteo": 1
     },
     {
-      "cargo": "Académico Visitante Fulbright",
+      "cargo": "Scientific Advisor",
       "grupo": "Investigación y academia",
       "conteo": 1
     },
@@ -310,6 +325,16 @@ const CARGOS_DATA = {
     },
     {
       "cargo": "Coordinadora de Ingeniería a la n",
+      "grupo": "Gestión y Negocios",
+      "conteo": 1
+    },
+    {
+      "cargo": "Asesora metodológica Aventura Horizontes",
+      "grupo": "Gestión y Negocios",
+      "conteo": 1
+    },
+    {
+      "cargo": "Consultoría en gestión de proyectos educativos",
       "grupo": "Gestión y Negocios",
       "conteo": 1
     },
@@ -344,32 +369,57 @@ const CARGOS_DATA = {
       "conteo": 1
     },
     {
-      "cargo": "Especialista en Registro Geofísico de Pozos | Operaciones de Campo",
+      "cargo": "Sondeos Geofísicos S.A.S. · Jornada completa",
+      "grupo": "Gestión y Negocios",
+      "conteo": 1
+    },
+    {
+      "cargo": "EAFIT University · Jornada parcial",
+      "grupo": "Gestión y Negocios",
+      "conteo": 1
+    },
+    {
+      "cargo": "3Cero4 Arquitectos S.A.S · Contrato temporal",
+      "grupo": "Gestión y Negocios",
+      "conteo": 1
+    },
+    {
+      "cargo": "Self Employed · Profesional independiente",
+      "grupo": "Gestión y Negocios",
+      "conteo": 1
+    },
+    {
+      "cargo": "Engineer Technologist – Geoelectrical & Subsurface Investigation",
       "grupo": "Ingeniería",
       "conteo": 1
     },
     {
-      "cargo": "Colaborador académico – Geofísica (Ad Honorem)",
+      "cargo": "Universidad EAFIT · Jornada parcial",
+      "grupo": "Gestión y Negocios",
+      "conteo": 1
+    },
+    {
+      "cargo": "Purdue University",
+      "grupo": "Gestión y Negocios",
+      "conteo": 1
+    },
+    {
+      "cargo": "Universidad Nacional de Colombia · Profesional independiente",
+      "grupo": "Gestión y Negocios",
+      "conteo": 1
+    },
+    {
+      "cargo": "Visiting Lecturer",
       "grupo": "Investigación y academia",
       "conteo": 1
     },
     {
-      "cargo": "Consultor Geofísico – Investigaciones Geotécnicas",
-      "grupo": "Ingeniería",
-      "conteo": 1
-    },
-    {
-      "cargo": "Profesor de Medio Tiempo",
+      "cargo": "Postdoctoral Research Scientist",
       "grupo": "Investigación y academia",
       "conteo": 1
     },
     {
-      "cargo": "Consultor de Investigación - \"Energética 2030\"",
-      "grupo": "Investigación y academia",
-      "conteo": 1
-    },
-    {
-      "cargo": "Practicante División Logística",
+      "cargo": "POSTOBON S.A. · Contrato de prácticas",
       "grupo": "Gestión y Negocios",
       "conteo": 1
     },
@@ -384,13 +434,18 @@ const CARGOS_DATA = {
       "conteo": 1
     },
     {
-      "cargo": "Practicante de I+D+i (Maestría) y Analista de Datos",
-      "grupo": "Datos, software e IA",
+      "cargo": "Profesional independiente",
+      "grupo": "Gestión y Negocios",
       "conteo": 1
     },
     {
-      "cargo": "Investigador de Doctorado",
+      "cargo": "Asesor de Investigación",
       "grupo": "Investigación y academia",
+      "conteo": 1
+    },
+    {
+      "cargo": "Practicante de I+D+i (Maestría) y Analista de Datos",
+      "grupo": "Datos, software e IA",
       "conteo": 1
     },
     {
@@ -414,13 +469,13 @@ const CARGOS_DATA = {
       "conteo": 1
     },
     {
-      "cargo": "Asistente de Cuentas",
+      "cargo": "Universidad EAFIT Grupo de Mantenimiento Industrial GEMI",
       "grupo": "Gestión y Negocios",
       "conteo": 1
     },
     {
-      "cargo": "Estudiante Investigador",
-      "grupo": "Investigación y academia",
+      "cargo": "Asistente de Cuentas",
+      "grupo": "Gestión y Negocios",
       "conteo": 1
     },
     {
@@ -434,8 +489,28 @@ const CARGOS_DATA = {
       "conteo": 1
     },
     {
+      "cargo": "Año sabático",
+      "grupo": "Gestión y Negocios",
+      "conteo": 1
+    },
+    {
+      "cargo": "Profesor e Investigador del Área Industria, Materiales y Energía ECAeI",
+      "grupo": "Investigación y academia",
+      "conteo": 1
+    },
+    {
       "cargo": "Asistente de Investigación de Pregrado",
       "grupo": "Investigación y academia",
+      "conteo": 1
+    },
+    {
+      "cargo": "Project Employee",
+      "grupo": "Gestión y Negocios",
+      "conteo": 1
+    },
+    {
+      "cargo": "Quantum engineer",
+      "grupo": "Ingeniería",
       "conteo": 1
     },
     {
@@ -444,12 +519,22 @@ const CARGOS_DATA = {
       "conteo": 1
     },
     {
-      "cargo": "Práctica Profesional - Proyecto de Vigilancia Tecnológica CubeSat",
-      "grupo": "Ingeniería",
+      "cargo": "Professional Internship Technological surveillance project CubeSat Universidad EAFIT",
+      "grupo": "Gestión y Negocios",
       "conteo": 1
     },
     {
       "cargo": "Líder de Proyecto EAFITHAB 1. Misión de Globo de Gran Altitud EAFIT, Global Space Balloon Challenge GSBC",
+      "grupo": "Gestión y Negocios",
+      "conteo": 1
+    },
+    {
+      "cargo": "Science Project Advisor - Universidad de los niños Eafit",
+      "grupo": "Investigación y academia",
+      "conteo": 1
+    },
+    {
+      "cargo": "CEO (Chief Executive Officer) - CoFunder SimpleSpace EAFIT Spin-off",
       "grupo": "Gestión y Negocios",
       "conteo": 1
     },
@@ -459,8 +544,48 @@ const CARGOS_DATA = {
       "conteo": 1
     },
     {
+      "cargo": "Research Affiliate",
+      "grupo": "Investigación y academia",
+      "conteo": 1
+    },
+    {
+      "cargo": "Consultor de proyectos",
+      "grupo": "Gestión y Negocios",
+      "conteo": 1
+    },
+    {
+      "cargo": "Ingeniero de desarrollo de producto",
+      "grupo": "Ingeniería",
+      "conteo": 1
+    },
+    {
+      "cargo": "Doctoral Candidate",
+      "grupo": "Investigación y academia",
+      "conteo": 1
+    },
+    {
+      "cargo": "Junior Product Modeller",
+      "grupo": "Gestión y Negocios",
+      "conteo": 1
+    },
+    {
+      "cargo": "Auxiliar Research Engineer",
+      "grupo": "Ingeniería",
+      "conteo": 1
+    },
+    {
+      "cargo": "post doctoral researcher",
+      "grupo": "Investigación y academia",
+      "conteo": 1
+    },
+    {
       "cargo": "Emprendedor independiente",
       "grupo": "Gestión y Negocios",
+      "conteo": 1
+    },
+    {
+      "cargo": "Docente de catedra",
+      "grupo": "Investigación y academia",
       "conteo": 1
     },
     {
@@ -471,6 +596,11 @@ const CARGOS_DATA = {
     {
       "cargo": "Cofundador y Director de Tecnología",
       "grupo": "Gestión y Negocios",
+      "conteo": 1
+    },
+    {
+      "cargo": "Computer Vision Advisor",
+      "grupo": "Datos, software e IA",
       "conteo": 1
     },
     {
@@ -489,17 +619,17 @@ const CARGOS_DATA = {
       "conteo": 1
     },
     {
+      "cargo": "R&D - Hardware and Software Performance Functions Engineer",
+      "grupo": "Datos, software e IA",
+      "conteo": 1
+    },
+    {
       "cargo": "Monitora en el Proyecto de investigación Apropiación de materiales Holográficos",
       "grupo": "Investigación y academia",
       "conteo": 1
     },
     {
       "cargo": "Joven investigadora en el proyecto Aplicación de nanopartículas de hierro en de plantas de maíz",
-      "grupo": "Investigación y academia",
-      "conteo": 1
-    },
-    {
-      "cargo": "Candidato a Doctorado",
       "grupo": "Investigación y academia",
       "conteo": 1
     },
@@ -519,12 +649,27 @@ const CARGOS_DATA = {
       "conteo": 1
     },
     {
+      "cargo": "Research Enginee",
+      "grupo": "Investigación y academia",
+      "conteo": 1
+    },
+    {
       "cargo": "Ingeniera de Proyecto de Investigación",
       "grupo": "Ingeniería",
       "conteo": 1
     },
     {
       "cargo": "Doctorado/Ingeniero de investigación/desarrollo",
+      "grupo": "Ingeniería",
+      "conteo": 1
+    },
+    {
+      "cargo": "Ingénieure/chercheuse recherche & développement",
+      "grupo": "Ingeniería",
+      "conteo": 1
+    },
+    {
+      "cargo": "Ingénieure/Chercheuse R&D",
       "grupo": "Ingeniería",
       "conteo": 1
     },
@@ -536,6 +681,11 @@ const CARGOS_DATA = {
     {
       "cargo": "Doctorado en modelado de baterías de iones de litio",
       "grupo": "Investigación y academia",
+      "conteo": 1
+    },
+    {
+      "cargo": "Expert Engineer",
+      "grupo": "Ingeniería",
       "conteo": 1
     },
     {
@@ -554,8 +704,23 @@ const CARGOS_DATA = {
       "conteo": 1
     },
     {
+      "cargo": "CEO",
+      "grupo": "Gestión y Negocios",
+      "conteo": 1
+    },
+    {
       "cargo": "Ingeniero en Mecatrónica",
       "grupo": "Ingeniería",
+      "conteo": 1
+    },
+    {
+      "cargo": "Ingénieur R&D",
+      "grupo": "Ingeniería",
+      "conteo": 1
+    },
+    {
+      "cargo": "Doctorant",
+      "grupo": "Investigación y academia",
       "conteo": 1
     },
     {
@@ -564,7 +729,27 @@ const CARGOS_DATA = {
       "conteo": 1
     },
     {
+      "cargo": "PhD Research Fellow",
+      "grupo": "Investigación y academia",
+      "conteo": 1
+    },
+    {
+      "cargo": "Scientific Software Developer",
+      "grupo": "Datos, software e IA",
+      "conteo": 1
+    },
+    {
       "cargo": "Ingeniero de IA/ML",
+      "grupo": "Datos, software e IA",
+      "conteo": 1
+    },
+    {
+      "cargo": "Prompt Engineer",
+      "grupo": "Datos, software e IA",
+      "conteo": 1
+    },
+    {
+      "cargo": "Prompt and ML Engineer",
       "grupo": "Datos, software e IA",
       "conteo": 1
     },
@@ -579,8 +764,28 @@ const CARGOS_DATA = {
       "conteo": 1
     },
     {
+      "cargo": "Cambio de profesión",
+      "grupo": "Gestión y Negocios",
+      "conteo": 1
+    },
+    {
       "cargo": "Practicante universitaria",
       "grupo": "Gestión y Negocios",
+      "conteo": 1
+    },
+    {
+      "cargo": "Ingeniera de desarrollo e investigación de software",
+      "grupo": "Datos, software e IA",
+      "conteo": 1
+    },
+    {
+      "cargo": "Coordinadora de Proyectos de Ingeniería",
+      "grupo": "Gestión y Negocios",
+      "conteo": 1
+    },
+    {
+      "cargo": "Software Engineer",
+      "grupo": "Datos, software e IA",
       "conteo": 1
     },
     {
@@ -591,6 +796,16 @@ const CARGOS_DATA = {
     {
       "cargo": "Innovaciones y Estrategias para Logística y Cadenas de Suministro",
       "grupo": "Gestión y Negocios",
+      "conteo": 1
+    },
+    {
+      "cargo": "R&D Engineer and PhD contract",
+      "grupo": "Ingeniería",
+      "conteo": 1
+    },
+    {
+      "cargo": "R&T/D Solar Array Engineer",
+      "grupo": "Ingeniería",
       "conteo": 1
     },
     {
@@ -609,6 +824,16 @@ const CARGOS_DATA = {
       "conteo": 1
     },
     {
+      "cargo": "Office of the CTO",
+      "grupo": "Gestión y Negocios",
+      "conteo": 1
+    },
+    {
+      "cargo": "Senior AI Project Manager",
+      "grupo": "Gestión y Negocios",
+      "conteo": 1
+    },
+    {
       "cargo": "Asistente administrativa de la Maestría en Física Aplicada",
       "grupo": "Investigación y academia",
       "conteo": 1
@@ -624,12 +849,27 @@ const CARGOS_DATA = {
       "conteo": 1
     },
     {
+      "cargo": "Assistante développement produit maille",
+      "grupo": "Gestión y Negocios",
+      "conteo": 1
+    },
+    {
+      "cargo": "Assistante développement produit",
+      "grupo": "Gestión y Negocios",
+      "conteo": 1
+    },
+    {
       "cargo": "Estudiante de Investigación de Pregrado",
       "grupo": "Investigación y academia",
       "conteo": 1
     },
     {
       "cargo": "Estudiante de Investigación de Posgrado",
+      "grupo": "Investigación y academia",
+      "conteo": 1
+    },
+    {
+      "cargo": "Online Tutor",
       "grupo": "Investigación y academia",
       "conteo": 1
     },
@@ -644,12 +884,27 @@ const CARGOS_DATA = {
       "conteo": 1
     },
     {
+      "cargo": "Research Engineer in materials for electrical applications",
+      "grupo": "Ingeniería",
+      "conteo": 1
+    },
+    {
+      "cargo": "Research Engineer in supercricitical fluids for surfaces treatment",
+      "grupo": "Ingeniería",
+      "conteo": 1
+    },
+    {
       "cargo": "Investigador y Asistente de Docencia en Ciencia de Materiales",
       "grupo": "Investigación y academia",
       "conteo": 1
     },
     {
       "cargo": "Joven investigador",
+      "grupo": "Investigación y academia",
+      "conteo": 1
+    },
+    {
+      "cargo": "Lecturer professor",
       "grupo": "Investigación y academia",
       "conteo": 1
     },
@@ -669,6 +924,16 @@ const CARGOS_DATA = {
       "conteo": 1
     },
     {
+      "cargo": "Analista de laboratorio",
+      "grupo": "Gestión y Negocios",
+      "conteo": 1
+    },
+    {
+      "cargo": "Auditor técnico",
+      "grupo": "Ingeniería",
+      "conteo": 1
+    },
+    {
       "cargo": "Asistente de Innovación",
       "grupo": "Investigación y academia",
       "conteo": 1
@@ -679,8 +944,18 @@ const CARGOS_DATA = {
       "conteo": 1
     },
     {
+      "cargo": "Web developer",
+      "grupo": "Datos, software e IA",
+      "conteo": 1
+    },
+    {
       "cargo": "Monitor Asistente Administrativo",
       "grupo": "Gestión y Negocios",
+      "conteo": 1
+    },
+    {
+      "cargo": "Research Fellow - EuPRAXIA-DN",
+      "grupo": "Investigación y academia",
       "conteo": 1
     },
     {
@@ -699,8 +974,28 @@ const CARGOS_DATA = {
       "conteo": 1
     },
     {
+      "cargo": "Líder integrador y desarrollador de soluciones de analítica",
+      "grupo": "Gestión y Negocios",
+      "conteo": 1
+    },
+    {
+      "cargo": "Analytics and Markets Analyst",
+      "grupo": "Datos, software e IA",
+      "conteo": 1
+    },
+    {
       "cargo": "Programador",
       "grupo": "Datos, software e IA",
+      "conteo": 1
+    },
+    {
+      "cargo": "profesor catedra",
+      "grupo": "Investigación y academia",
+      "conteo": 1
+    },
+    {
+      "cargo": "estudiante de doctorado",
+      "grupo": "Investigación y academia",
       "conteo": 1
     },
     {
@@ -724,8 +1019,23 @@ const CARGOS_DATA = {
       "conteo": 1
     },
     {
+      "cargo": "Consultor Climático",
+      "grupo": "Gestión y Negocios",
+      "conteo": 1
+    },
+    {
       "cargo": "Monitor académico",
       "grupo": "Investigación y academia",
+      "conteo": 1
+    },
+    {
+      "cargo": "Technical Development Engineer",
+      "grupo": "Ingeniería",
+      "conteo": 1
+    },
+    {
+      "cargo": "Carbon professional",
+      "grupo": "Gestión y Negocios",
       "conteo": 1
     },
     {
@@ -739,7 +1049,12 @@ const CARGOS_DATA = {
       "conteo": 1
     },
     {
-      "cargo": "Desarrollador de software",
+      "cargo": "BI Analyst",
+      "grupo": "Datos, software e IA",
+      "conteo": 1
+    },
+    {
+      "cargo": "Analytics Engineer",
       "grupo": "Datos, software e IA",
       "conteo": 1
     },
@@ -789,6 +1104,11 @@ const CARGOS_DATA = {
       "conteo": 1
     },
     {
+      "cargo": "Ingeniero jefe de software",
+      "grupo": "Gestión y Negocios",
+      "conteo": 1
+    },
+    {
       "cargo": "Investigador SENNOVA",
       "grupo": "Investigación y academia",
       "conteo": 1
@@ -804,6 +1124,11 @@ const CARGOS_DATA = {
       "conteo": 1
     },
     {
+      "cargo": "Instructor",
+      "grupo": "Investigación y academia",
+      "conteo": 1
+    },
+    {
       "cargo": "Líder de Ciencia de Datos",
       "grupo": "Datos, software e IA",
       "conteo": 1
@@ -814,12 +1139,22 @@ const CARGOS_DATA = {
       "conteo": 1
     },
     {
-      "cargo": "Investigador de Ciencia de Datos",
-      "grupo": "Datos, software e IA",
+      "cargo": "Ecosíntesis",
+      "grupo": "Investigación y academia",
       "conteo": 1
     },
     {
       "cargo": "Practicante de Fotónica",
+      "grupo": "Ingeniería",
+      "conteo": 1
+    },
+    {
+      "cargo": "MSc. Researcher",
+      "grupo": "Investigación y academia",
+      "conteo": 1
+    },
+    {
+      "cargo": "optics engineer",
       "grupo": "Ingeniería",
       "conteo": 1
     },
@@ -844,6 +1179,11 @@ const CARGOS_DATA = {
       "conteo": 1
     },
     {
+      "cargo": "Data Scientist & BPO Coordinator",
+      "grupo": "Gestión y Negocios",
+      "conteo": 1
+    },
+    {
       "cargo": "Estudiante en prácticas",
       "grupo": "Ingeniería",
       "conteo": 1
@@ -859,12 +1199,32 @@ const CARGOS_DATA = {
       "conteo": 1
     },
     {
-      "cargo": "Práctica en sistemas de telecomunicaciones",
+      "cargo": "senior hubspot ingenineer",
       "grupo": "Datos, software e IA",
       "conteo": 1
     },
     {
+      "cargo": "Agencia Espacial de Colombia - AEC",
+      "grupo": "Ingeniería",
+      "conteo": 1
+    },
+    {
+      "cargo": "SimpleSpace",
+      "grupo": "Gestión y Negocios",
+      "conteo": 1
+    },
+    {
       "cargo": "Arquitecto de Soluciones de IA",
+      "grupo": "Datos, software e IA",
+      "conteo": 1
+    },
+    {
+      "cargo": "Lead AI/Data Scientist Team",
+      "grupo": "Gestión y Negocios",
+      "conteo": 1
+    },
+    {
+      "cargo": "Full Stack Developer Senior",
       "grupo": "Datos, software e IA",
       "conteo": 1
     },
@@ -904,12 +1264,27 @@ const CARGOS_DATA = {
       "conteo": 1
     },
     {
+      "cargo": "Chief Technology Officer",
+      "grupo": "Gestión y Negocios",
+      "conteo": 1
+    },
+    {
       "cargo": "Desarrollador de IA",
       "grupo": "Datos, software e IA",
       "conteo": 1
     },
     {
       "cargo": "Miembro Fundador del Equipo, Científico de Datos",
+      "grupo": "Datos, software e IA",
+      "conteo": 1
+    },
+    {
+      "cargo": "Adjunct Professor",
+      "grupo": "Investigación y academia",
+      "conteo": 1
+    },
+    {
+      "cargo": "advance machine learning engineer",
       "grupo": "Datos, software e IA",
       "conteo": 1
     },
@@ -929,6 +1304,16 @@ const CARGOS_DATA = {
       "conteo": 1
     },
     {
+      "cargo": "Permanent Part-time",
+      "grupo": "Gestión y Negocios",
+      "conteo": 1
+    },
+    {
+      "cargo": "Associate Sales Operations Analyst",
+      "grupo": "Gestión y Negocios",
+      "conteo": 1
+    },
+    {
       "cargo": "Desarrollador de back-end",
       "grupo": "Datos, software e IA",
       "conteo": 1
@@ -939,8 +1324,18 @@ const CARGOS_DATA = {
       "conteo": 1
     },
     {
+      "cargo": "Desarrollador",
+      "grupo": "Datos, software e IA",
+      "conteo": 1
+    },
+    {
       "cargo": "Físico Ingeniero",
       "grupo": "Ingeniería",
+      "conteo": 1
+    },
+    {
+      "cargo": "MSc. Thesis",
+      "grupo": "Investigación y academia",
       "conteo": 1
     },
     {
@@ -959,12 +1354,22 @@ const CARGOS_DATA = {
       "conteo": 1
     },
     {
+      "cargo": "Investigador en Sostenibilidad",
+      "grupo": "Investigación y academia",
+      "conteo": 1
+    },
+    {
       "cargo": "Científico de datos | Joven investigador",
       "grupo": "Datos, software e IA",
       "conteo": 1
     },
     {
       "cargo": "Analista Analítica Comercial",
+      "grupo": "Datos, software e IA",
+      "conteo": 1
+    },
+    {
+      "cargo": "Analista de datos - Analítica del Negocio",
       "grupo": "Datos, software e IA",
       "conteo": 1
     },
@@ -1014,6 +1419,11 @@ const CARGOS_DATA = {
       "conteo": 1
     },
     {
+      "cargo": "Full-stack Developer",
+      "grupo": "Datos, software e IA",
+      "conteo": 1
+    },
+    {
       "cargo": "Practicante Asistente de Investigación",
       "grupo": "Investigación y academia",
       "conteo": 1
@@ -1024,17 +1434,22 @@ const CARGOS_DATA = {
       "conteo": 1
     },
     {
+      "cargo": "Strategic Director",
+      "grupo": "Gestión y Negocios",
+      "conteo": 1
+    },
+    {
       "cargo": "Asistente de Investigación en el proyecto 4DAir EAFIT-MINCIENCIAS.",
       "grupo": "Investigación y academia",
       "conteo": 1
     },
     {
-      "cargo": "Tesis de Maestría",
-      "grupo": "Investigación y academia",
+      "cargo": "ICFO",
+      "grupo": "Gestión y Negocios",
       "conteo": 1
     },
     {
-      "cargo": "Joven Embajador",
+      "cargo": "Programme Jeunes Ambassadeurs Auvergne - Rhône-Alpes",
       "grupo": "Gestión y Negocios",
       "conteo": 1
     },
@@ -1069,17 +1484,17 @@ const CARGOS_DATA = {
       "conteo": 1
     },
     {
-      "cargo": "Profesora",
-      "grupo": "Investigación y academia",
-      "conteo": 1
-    },
-    {
       "cargo": "Ingeniero de Desarrollo de Procesos",
       "grupo": "Ingeniería",
       "conteo": 1
     },
     {
       "cargo": "Contratista",
+      "grupo": "Gestión y Negocios",
+      "conteo": 1
+    },
+    {
+      "cargo": "Senior QA Analyst",
       "grupo": "Gestión y Negocios",
       "conteo": 1
     },
@@ -1164,11 +1579,6 @@ const CARGOS_DATA = {
       "conteo": 1
     },
     {
-      "cargo": "Ingeniero de datos",
-      "grupo": "Datos, software e IA",
-      "conteo": 1
-    },
-    {
       "cargo": "Analista",
       "grupo": "Datos, software e IA",
       "conteo": 1
@@ -1190,6 +1600,11 @@ const CARGOS_DATA = {
     },
     {
       "cargo": "Asistente de Ingeniería",
+      "grupo": "Ingeniería",
+      "conteo": 1
+    },
+    {
+      "cargo": "Engineer",
       "grupo": "Ingeniería",
       "conteo": 1
     },
