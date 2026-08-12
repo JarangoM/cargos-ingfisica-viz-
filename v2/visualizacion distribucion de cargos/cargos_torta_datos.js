@@ -5,30 +5,30 @@ const CARGOS_TORTA_DATA = {
       "id": "investigacion_y_academia",
       "nombre": "Investigación y academia",
       "color": "#4C6EF5",
-      "total": 146,
-      "cargosUnicos": 78,
+      "total": 193,
+      "cargosUnicos": 97,
       "items": [
         {
           "cargo": "Asistentes y auxiliares",
-          "frecuencia": 50,
-          "porcentaje": 34.25,
+          "frecuencia": 56,
+          "porcentaje": 29.02,
           "color": "#0a2db8",
           "nCargos": 17,
           "detalle": [
             {
-              "cargo": "Asistente de Investigación",
-              "conteo": 23
+              "cargo": "Asistente de investigación",
+              "conteo": 28
             },
             {
-              "cargo": "Asistente de Laboratorio",
+              "cargo": "Asistente de Investigación de Posgrado",
+              "conteo": 4
+            },
+            {
+              "cargo": "Asistente de laboratorio",
               "conteo": 4
             },
             {
               "cargo": "Asistente de Docencia",
-              "conteo": 3
-            },
-            {
-              "cargo": "Asistente de Investigación de Posgrado",
               "conteo": 3
             },
             {
@@ -87,14 +87,18 @@ const CARGOS_TORTA_DATA = {
         },
         {
           "cargo": "Practicantes y estudiantes",
-          "frecuencia": 41,
-          "porcentaje": 28.08,
+          "frecuencia": 47,
+          "porcentaje": 24.35,
           "color": "#0c35d8",
           "nCargos": 22,
           "detalle": [
             {
               "cargo": "Practicante de Investigación",
-              "conteo": 7
+              "conteo": 9
+            },
+            {
+              "cargo": "Estudiante de Doctorado",
+              "conteo": 6
             },
             {
               "cargo": "Práctica de Investigación",
@@ -114,10 +118,6 @@ const CARGOS_TORTA_DATA = {
             },
             {
               "cargo": "Aprendiz en Práctica",
-              "conteo": 2
-            },
-            {
-              "cargo": "Estudiante de Doctorado",
               "conteo": 2
             },
             {
@@ -184,22 +184,30 @@ const CARGOS_TORTA_DATA = {
         },
         {
           "cargo": "Investigadores/as",
-          "frecuencia": 26,
-          "porcentaje": 17.81,
+          "frecuencia": 37,
+          "porcentaje": 19.17,
           "color": "#1441f2",
-          "nCargos": 14,
+          "nCargos": 15,
           "detalle": [
             {
               "cargo": "Investigador",
-              "conteo": 8
+              "conteo": 11
             },
             {
               "cargo": "Investigador Joven",
-              "conteo": 4
+              "conteo": 6
+            },
+            {
+              "cargo": "Investigador Postdoctoral",
+              "conteo": 5
             },
             {
               "cargo": "Joven Investigador/a",
               "conteo": 3
+            },
+            {
+              "cargo": "Investigador de Doctorado",
+              "conteo": 2
             },
             {
               "cargo": "Investigador - Oceanografía Operacional",
@@ -218,19 +226,15 @@ const CARGOS_TORTA_DATA = {
               "conteo": 1
             },
             {
-              "cargo": "Investigador Postdoctoral",
-              "conteo": 1
-            },
-            {
               "cargo": "Investigador SENNOVA",
               "conteo": 1
             },
             {
-              "cargo": "Investigador de Doctorado",
+              "cargo": "Investigador en Educación",
               "conteo": 1
             },
             {
-              "cargo": "Investigador en Educación",
+              "cargo": "Investigador en Sostenibilidad",
               "conteo": 1
             },
             {
@@ -248,15 +252,124 @@ const CARGOS_TORTA_DATA = {
           ]
         },
         {
-          "cargo": "Docentes",
-          "frecuencia": 14,
-          "porcentaje": 9.59,
+          "cargo": "Otros cargos",
+          "frecuencia": 29,
+          "porcentaje": 15.03,
           "color": "#345bf4",
-          "nCargos": 12,
+          "nCargos": 25,
+          "detalle": [
+            {
+              "cargo": "Assistant Professor",
+              "conteo": 2
+            },
+            {
+              "cargo": "Candidato a Doctorado",
+              "conteo": 2
+            },
+            {
+              "cargo": "Doctorando CIFRE",
+              "conteo": 2
+            },
+            {
+              "cargo": "Investigación",
+              "conteo": 2
+            },
+            {
+              "cargo": "Adjunct Professor",
+              "conteo": 1
+            },
+            {
+              "cargo": "Asesor de Investigación",
+              "conteo": 1
+            },
+            {
+              "cargo": "Beca Postdoctoral",
+              "conteo": 1
+            },
+            {
+              "cargo": "Candidato a Doctorado en Mecatrónica",
+              "conteo": 1
+            },
+            {
+              "cargo": "Doctorado en modelado de baterías de iones de litio",
+              "conteo": 1
+            },
+            {
+              "cargo": "Doctoral Candidate",
+              "conteo": 1
+            },
+            {
+              "cargo": "Doctorant",
+              "conteo": 1
+            },
+            {
+              "cargo": "Ecosíntesis",
+              "conteo": 1
+            },
+            {
+              "cargo": "Lecturer professor",
+              "conteo": 1
+            },
+            {
+              "cargo": "MSc. Researcher",
+              "conteo": 1
+            },
+            {
+              "cargo": "MSc. Thesis",
+              "conteo": 1
+            },
+            {
+              "cargo": "Misión de enseñanza",
+              "conteo": 1
+            },
+            {
+              "cargo": "Online Tutor",
+              "conteo": 1
+            },
+            {
+              "cargo": "PhD Research Fellow",
+              "conteo": 1
+            },
+            {
+              "cargo": "Postdoctoral Research Scientist",
+              "conteo": 1
+            },
+            {
+              "cargo": "Research Affiliate",
+              "conteo": 1
+            },
+            {
+              "cargo": "Research Enginee",
+              "conteo": 1
+            },
+            {
+              "cargo": "Research Fellow - EuPRAXIA-DN",
+              "conteo": 1
+            },
+            {
+              "cargo": "Science Project Advisor - Universidad de los niños Eafit",
+              "conteo": 1
+            },
+            {
+              "cargo": "Visiting Lecturer",
+              "conteo": 1
+            },
+            {
+              "cargo": "post doctoral researcher",
+              "conteo": 1
+            }
+          ]
+        },
+        {
+          "cargo": "Docentes",
+          "frecuencia": 20,
+          "porcentaje": 10.36,
+          "color": "#5475f5",
+          "nCargos": 14,
           "detalle": [
             {
               "cargo": "Profesor/a",
-              "conteo": 3
+              "conteo": 7
             },
             {
               "cargo": "Académico Investigador",
@@ -271,7 +384,7 @@ const CARGOS_TORTA_DATA = {
               "conteo": 1
             },
             {
-              "cargo": "Colaborador académico – Geofísica (Ad Honorem)",
+              "cargo": "Docente de catedra",
               "conteo": 1
             },
             {
@@ -280,6 +393,10 @@ const CARGOS_TORTA_DATA = {
             },
             {
               "cargo": "Docente universitaria de física",
+              "conteo": 1
+            },
+            {
+              "cargo": "Instructor",
               "conteo": 1
             },
             {
@@ -295,56 +412,15 @@ const CARGOS_TORTA_DATA = {
               "conteo": 1
             },
             {
-              "cargo": "Profesor de Medio Tiempo",
+              "cargo": "Profesor e Investigador del Área Industria, Materiales y Energía ECAeI",
               "conteo": 1
             },
             {
               "cargo": "Profesora de robótica",
               "conteo": 1
-            }
-          ]
-        },
-        {
-          "cargo": "Otros cargos",
-          "frecuencia": 11,
-          "porcentaje": 7.53,
-          "color": "#5475f5",
-          "nCargos": 9,
-          "detalle": [
-            {
-              "cargo": "Doctorando CIFRE",
-              "conteo": 2
             },
             {
-              "cargo": "Investigación",
-              "conteo": 2
-            },
-            {
-              "cargo": "Asistencia de Investigación",
-              "conteo": 1
-            },
-            {
-              "cargo": "Beca Postdoctoral",
-              "conteo": 1
-            },
-            {
-              "cargo": "Candidato a Doctorado",
-              "conteo": 1
-            },
-            {
-              "cargo": "Candidato a Doctorado en Mecatrónica",
-              "conteo": 1
-            },
-            {
-              "cargo": "Doctorado en modelado de baterías de iones de litio",
-              "conteo": 1
-            },
-            {
-              "cargo": "Misión de enseñanza",
-              "conteo": 1
-            },
-            {
-              "cargo": "Tesis de Maestría",
+              "cargo": "profesor catedra",
               "conteo": 1
             }
           ]
@@ -352,7 +428,7 @@ const CARGOS_TORTA_DATA = {
         {
           "cargo": "Coordinación y liderazgo",
           "frecuencia": 3,
-          "porcentaje": 2.05,
+          "porcentaje": 1.55,
           "color": "#758ff7",
           "nCargos": 3,
           "detalle": [
@@ -371,14 +447,14 @@ const CARGOS_TORTA_DATA = {
           ]
         },
         {
-          "cargo": "Consultores/as",
+          "cargo": "Científicos/as",
           "frecuencia": 1,
-          "porcentaje": 0.68,
+          "porcentaje": 0.52,
           "color": "#95a9f9",
           "nCargos": 1,
           "detalle": [
             {
-              "cargo": "Consultor de Investigación - \"Energética 2030\"",
+              "cargo": "Scientific Advisor",
               "conteo": 1
             }
           ]
@@ -389,19 +465,19 @@ const CARGOS_TORTA_DATA = {
       "id": "datos_software_e_ia",
       "nombre": "Datos, software e IA",
       "color": "#12B886",
-      "total": 88,
-      "cargosUnicos": 66,
+      "total": 113,
+      "cargosUnicos": 81,
       "items": [
         {
           "cargo": "Analistas",
-          "frecuencia": 20,
-          "porcentaje": 22.73,
+          "frecuencia": 23,
+          "porcentaje": 20.35,
           "color": "#11b181",
-          "nCargos": 13,
+          "nCargos": 14,
           "detalle": [
             {
               "cargo": "Analista de datos",
-              "conteo": 5
+              "conteo": 7
             },
             {
               "cargo": "Analista de Rendimiento",
@@ -440,6 +516,10 @@ const CARGOS_TORTA_DATA = {
               "conteo": 1
             },
             {
+              "cargo": "Analista de datos - Analítica del Negocio",
+              "conteo": 1
+            },
+            {
               "cargo": "Analista de desarrollo",
               "conteo": 1
             },
@@ -454,23 +534,116 @@ const CARGOS_TORTA_DATA = {
           ]
         },
         {
-          "cargo": "Ingenieros/as",
-          "frecuencia": 15,
-          "porcentaje": 17.05,
+          "cargo": "Otros cargos",
+          "frecuencia": 20,
+          "porcentaje": 17.7,
           "color": "#13c590",
-          "nCargos": 11,
+          "nCargos": 20,
           "detalle": [
             {
-              "cargo": "Ingeniero de Datos",
-              "conteo": 3
+              "cargo": "Administrador de Sistemas IT y Especialista BI",
+              "conteo": 1
+            },
+            {
+              "cargo": "Analytics Engineer",
+              "conteo": 1
+            },
+            {
+              "cargo": "Analytics and Markets Analyst",
+              "conteo": 1
+            },
+            {
+              "cargo": "Arquitecto de Soluciones de IA",
+              "conteo": 1
+            },
+            {
+              "cargo": "BI Analyst",
+              "conteo": 1
+            },
+            {
+              "cargo": "Ciencia de Datos",
+              "conteo": 1
+            },
+            {
+              "cargo": "Computer Vision Advisor",
+              "conteo": 1
+            },
+            {
+              "cargo": "Full Stack Developer Senior",
+              "conteo": 1
+            },
+            {
+              "cargo": "Full-stack Developer",
+              "conteo": 1
+            },
+            {
+              "cargo": "Inteligencia de Negocios",
+              "conteo": 1
+            },
+            {
+              "cargo": "Mentor de Tecnología",
+              "conteo": 1
+            },
+            {
+              "cargo": "Modelador Matemático",
+              "conteo": 1
+            },
+            {
+              "cargo": "Profesional Ciencia y Tecnología",
+              "conteo": 1
+            },
+            {
+              "cargo": "Prompt Engineer",
+              "conteo": 1
+            },
+            {
+              "cargo": "Prompt and ML Engineer",
+              "conteo": 1
+            },
+            {
+              "cargo": "R&D - Hardware and Software Performance Functions Engineer",
+              "conteo": 1
+            },
+            {
+              "cargo": "Software Engineer",
+              "conteo": 1
+            },
+            {
+              "cargo": "Web developer",
+              "conteo": 1
+            },
+            {
+              "cargo": "advance machine learning engineer",
+              "conteo": 1
+            },
+            {
+              "cargo": "senior hubspot ingenineer",
+              "conteo": 1
+            }
+          ]
+        },
+        {
+          "cargo": "Ingenieros/as",
+          "frecuencia": 19,
+          "porcentaje": 16.81,
+          "color": "#15da9f",
+          "nCargos": 12,
+          "detalle": [
+            {
+              "cargo": "Ingeniero de datos",
+              "conteo": 5
             },
             {
               "cargo": "Ingeniero de DevOps y Software",
-              "conteo": 2
+              "conteo": 3
             },
             {
               "cargo": "Ingeniero de software",
               "conteo": 2
+            },
+            {
+              "cargo": "Ingeniera de desarrollo e investigación de software",
+              "conteo": 1
             },
             {
               "cargo": "Ingeniero Junior de HubSpot",
@@ -507,15 +680,40 @@ const CARGOS_TORTA_DATA = {
           ]
         },
         {
-          "cargo": "Desarrolladores/as y programadores/as",
-          "frecuencia": 12,
-          "porcentaje": 13.64,
-          "color": "#15da9f",
-          "nCargos": 10,
+          "cargo": "Científicos/as",
+          "frecuencia": 15,
+          "porcentaje": 13.27,
+          "color": "#1de9ab",
+          "nCargos": 3,
           "detalle": [
             {
-              "cargo": "Desarrollador de Software",
-              "conteo": 3
+              "cargo": "Científico/a de Datos",
+              "conteo": 13
+            },
+            {
+              "cargo": "Miembro Fundador del Equipo, Científico de Datos",
+              "conteo": 1
+            },
+            {
+              "cargo": "Scientific Software Developer",
+              "conteo": 1
+            }
+          ]
+        },
+        {
+          "cargo": "Desarrolladores/as y programadores/as",
+          "frecuencia": 14,
+          "porcentaje": 12.39,
+          "color": "#32ebb3",
+          "nCargos": 11,
+          "detalle": [
+            {
+              "cargo": "Desarrollador de software",
+              "conteo": 4
+            },
+            {
+              "cargo": "Desarrollador",
+              "conteo": 1
             },
             {
               "cargo": "Desarrollador Funcional",
@@ -556,28 +754,11 @@ const CARGOS_TORTA_DATA = {
           ]
         },
         {
-          "cargo": "Científicos/as",
-          "frecuencia": 10,
-          "porcentaje": 11.36,
-          "color": "#1de9ab",
-          "nCargos": 2,
-          "detalle": [
-            {
-              "cargo": "Científico/a de Datos",
-              "conteo": 9
-            },
-            {
-              "cargo": "Miembro Fundador del Equipo, Científico de Datos",
-              "conteo": 1
-            }
-          ]
-        },
-        {
           "cargo": "Practicantes y estudiantes",
-          "frecuencia": 8,
-          "porcentaje": 9.09,
-          "color": "#32ebb3",
-          "nCargos": 8,
+          "frecuencia": 7,
+          "porcentaje": 6.19,
+          "color": "#46edbb",
+          "nCargos": 7,
           "detalle": [
             {
               "cargo": "Aprendiz de Mantenimiento Predictivo",
@@ -606,54 +787,13 @@ const CARGOS_TORTA_DATA = {
             {
               "cargo": "Práctica Estudiantil",
               "conteo": 1
-            },
-            {
-              "cargo": "Práctica en sistemas de telecomunicaciones",
-              "conteo": 1
-            }
-          ]
-        },
-        {
-          "cargo": "Otros cargos",
-          "frecuencia": 7,
-          "porcentaje": 7.95,
-          "color": "#46edbb",
-          "nCargos": 7,
-          "detalle": [
-            {
-              "cargo": "Administrador de Sistemas IT y Especialista BI",
-              "conteo": 1
-            },
-            {
-              "cargo": "Arquitecto de Soluciones de IA",
-              "conteo": 1
-            },
-            {
-              "cargo": "Ciencia de Datos",
-              "conteo": 1
-            },
-            {
-              "cargo": "Inteligencia de Negocios",
-              "conteo": 1
-            },
-            {
-              "cargo": "Mentor de Tecnología",
-              "conteo": 1
-            },
-            {
-              "cargo": "Modelador Matemático",
-              "conteo": 1
-            },
-            {
-              "cargo": "Profesional Ciencia y Tecnología",
-              "conteo": 1
             }
           ]
         },
         {
           "cargo": "Coordinación y liderazgo",
           "frecuencia": 6,
-          "porcentaje": 6.82,
+          "porcentaje": 5.31,
           "color": "#5befc2",
           "nCargos": 6,
           "detalle": [
@@ -685,10 +825,10 @@ const CARGOS_TORTA_DATA = {
         },
         {
           "cargo": "Investigadores/as",
-          "frecuencia": 4,
-          "porcentaje": 4.55,
+          "frecuencia": 3,
+          "porcentaje": 2.65,
           "color": "#70f1ca",
-          "nCargos": 3,
+          "nCargos": 2,
           "detalle": [
             {
               "cargo": "Investigador Bioinformático",
@@ -697,17 +837,13 @@ const CARGOS_TORTA_DATA = {
             {
               "cargo": "Científico de datos | Joven investigador",
               "conteo": 1
-            },
-            {
-              "cargo": "Investigador de Ciencia de Datos",
-              "conteo": 1
             }
           ]
         },
         {
           "cargo": "Asistentes y auxiliares",
           "frecuencia": 3,
-          "porcentaje": 3.41,
+          "porcentaje": 2.65,
           "color": "#84f3d2",
           "nCargos": 3,
           "detalle": [
@@ -728,7 +864,7 @@ const CARGOS_TORTA_DATA = {
         {
           "cargo": "Consultores/as",
           "frecuencia": 3,
-          "porcentaje": 3.41,
+          "porcentaje": 2.65,
           "color": "#99f5d9",
           "nCargos": 3,
           "detalle": [
@@ -749,18 +885,369 @@ const CARGOS_TORTA_DATA = {
       ]
     },
     {
+      "id": "gestion_y_negocios",
+      "nombre": "Gestión y Negocios",
+      "color": "#BE4BDB",
+      "total": 81,
+      "cargosUnicos": 72,
+      "items": [
+        {
+          "cargo": "Otros cargos",
+          "frecuencia": 46,
+          "porcentaje": 56.79,
+          "color": "#8720a2",
+          "nCargos": 44,
+          "detalle": [
+            {
+              "cargo": "Descanso profesional",
+              "conteo": 2
+            },
+            {
+              "cargo": "Talento B Senior",
+              "conteo": 2
+            },
+            {
+              "cargo": "3Cero4 Arquitectos S.A.S · Contrato temporal",
+              "conteo": 1
+            },
+            {
+              "cargo": "Asesora metodológica Aventura Horizontes",
+              "conteo": 1
+            },
+            {
+              "cargo": "Assistante développement produit",
+              "conteo": 1
+            },
+            {
+              "cargo": "Assistante développement produit maille",
+              "conteo": 1
+            },
+            {
+              "cargo": "Associate Sales Operations Analyst",
+              "conteo": 1
+            },
+            {
+              "cargo": "Año sabático",
+              "conteo": 1
+            },
+            {
+              "cargo": "CEO",
+              "conteo": 1
+            },
+            {
+              "cargo": "CEO (Chief Executive Officer) - CoFunder SimpleSpace EAFIT Spin-off",
+              "conteo": 1
+            },
+            {
+              "cargo": "Cambio de profesión",
+              "conteo": 1
+            },
+            {
+              "cargo": "Carbon professional",
+              "conteo": 1
+            },
+            {
+              "cargo": "Chief Technology Officer",
+              "conteo": 1
+            },
+            {
+              "cargo": "Contratista",
+              "conteo": 1
+            },
+            {
+              "cargo": "Creador de Contenido Independiente",
+              "conteo": 1
+            },
+            {
+              "cargo": "Data Scientist & BPO Coordinator",
+              "conteo": 1
+            },
+            {
+              "cargo": "EAFIT University · Jornada parcial",
+              "conteo": 1
+            },
+            {
+              "cargo": "Embajador de Vinculación de Aceleradora",
+              "conteo": 1
+            },
+            {
+              "cargo": "Emprendedor independiente",
+              "conteo": 1
+            },
+            {
+              "cargo": "Especialista en Gestión del Desempeño",
+              "conteo": 1
+            },
+            {
+              "cargo": "Especialista en riesgos",
+              "conteo": 1
+            },
+            {
+              "cargo": "ICFO",
+              "conteo": 1
+            },
+            {
+              "cargo": "Innovaciones y Estrategias para Logística y Cadenas de Suministro",
+              "conteo": 1
+            },
+            {
+              "cargo": "Junior Product Modeller",
+              "conteo": 1
+            },
+            {
+              "cargo": "Lead AI/Data Scientist Team",
+              "conteo": 1
+            },
+            {
+              "cargo": "Office of the CTO",
+              "conteo": 1
+            },
+            {
+              "cargo": "Permanent Part-time",
+              "conteo": 1
+            },
+            {
+              "cargo": "Profesional Formulación de Proyectos",
+              "conteo": 1
+            },
+            {
+              "cargo": "Profesional en contenidos",
+              "conteo": 1
+            },
+            {
+              "cargo": "Profesional independiente",
+              "conteo": 1
+            },
+            {
+              "cargo": "Professional Internship Technological surveillance project CubeSat Universidad EAFIT",
+              "conteo": 1
+            },
+            {
+              "cargo": "Programme Jeunes Ambassadeurs Auvergne - Rhône-Alpes",
+              "conteo": 1
+            },
+            {
+              "cargo": "Project Employee",
+              "conteo": 1
+            },
+            {
+              "cargo": "Purdue University",
+              "conteo": 1
+            },
+            {
+              "cargo": "Self Employed · Profesional independiente",
+              "conteo": 1
+            },
+            {
+              "cargo": "Senior AI Project Manager",
+              "conteo": 1
+            },
+            {
+              "cargo": "Senior QA Analyst",
+              "conteo": 1
+            },
+            {
+              "cargo": "SimpleSpace",
+              "conteo": 1
+            },
+            {
+              "cargo": "Sondeos Geofísicos S.A.S. · Jornada completa",
+              "conteo": 1
+            },
+            {
+              "cargo": "Talento B Junior",
+              "conteo": 1
+            },
+            {
+              "cargo": "Universidad EAFIT Grupo de Mantenimiento Industrial GEMI",
+              "conteo": 1
+            },
+            {
+              "cargo": "Universidad EAFIT · Jornada parcial",
+              "conteo": 1
+            },
+            {
+              "cargo": "Universidad Nacional de Colombia · Profesional independiente",
+              "conteo": 1
+            },
+            {
+              "cargo": "interna",
+              "conteo": 1
+            }
+          ]
+        },
+        {
+          "cargo": "Coordinación y liderazgo",
+          "frecuencia": 12,
+          "porcentaje": 14.81,
+          "color": "#a427c4",
+          "nCargos": 12,
+          "detalle": [
+            {
+              "cargo": "Cofundador y Director de Tecnología",
+              "conteo": 1
+            },
+            {
+              "cargo": "Coordinadora de Ingeniería a la n",
+              "conteo": 1
+            },
+            {
+              "cargo": "Coordinadora de Proyectos de Ingeniería",
+              "conteo": 1
+            },
+            {
+              "cargo": "Director de riesgos",
+              "conteo": 1
+            },
+            {
+              "cargo": "Gerente de Negocios",
+              "conteo": 1
+            },
+            {
+              "cargo": "Ingeniero jefe de software",
+              "conteo": 1
+            },
+            {
+              "cargo": "Jefe de Proyecto",
+              "conteo": 1
+            },
+            {
+              "cargo": "Líder de Proyecto EAFITHAB 1. Misión de Globo de Gran Altitud EAFIT, Global Space Balloon Challenge GSBC",
+              "conteo": 1
+            },
+            {
+              "cargo": "Líder de Proyecto de Verificación y Validación",
+              "conteo": 1
+            },
+            {
+              "cargo": "Líder integrador y desarrollador de soluciones de analítica",
+              "conteo": 1
+            },
+            {
+              "cargo": "Socio y Director de Redes Sociales",
+              "conteo": 1
+            },
+            {
+              "cargo": "Strategic Director",
+              "conteo": 1
+            }
+          ]
+        },
+        {
+          "cargo": "Practicantes y estudiantes",
+          "frecuencia": 10,
+          "porcentaje": 12.35,
+          "color": "#b83cd8",
+          "nCargos": 6,
+          "detalle": [
+            {
+              "cargo": "Practicante",
+              "conteo": 5
+            },
+            {
+              "cargo": "POSTOBON S.A. · Contrato de prácticas",
+              "conteo": 1
+            },
+            {
+              "cargo": "Practicante Profesional - Innovación y Calidad",
+              "conteo": 1
+            },
+            {
+              "cargo": "Practicante en desarrollo sostenible",
+              "conteo": 1
+            },
+            {
+              "cargo": "Practicante universitaria",
+              "conteo": 1
+            },
+            {
+              "cargo": "Práctica Estudiantil",
+              "conteo": 1
+            }
+          ]
+        },
+        {
+          "cargo": "Consultores/as",
+          "frecuencia": 9,
+          "porcentaje": 11.11,
+          "color": "#c55edf",
+          "nCargos": 6,
+          "detalle": [
+            {
+              "cargo": "Auxiliar Consultor",
+              "conteo": 2
+            },
+            {
+              "cargo": "Consultor",
+              "conteo": 2
+            },
+            {
+              "cargo": "Consultor Junior",
+              "conteo": 2
+            },
+            {
+              "cargo": "Consultor Climático",
+              "conteo": 1
+            },
+            {
+              "cargo": "Consultor de proyectos",
+              "conteo": 1
+            },
+            {
+              "cargo": "Consultoría en gestión de proyectos educativos",
+              "conteo": 1
+            }
+          ]
+        },
+        {
+          "cargo": "Asistentes y auxiliares",
+          "frecuencia": 3,
+          "porcentaje": 3.7,
+          "color": "#d17fe6",
+          "nCargos": 3,
+          "detalle": [
+            {
+              "cargo": "Asistente de Cuentas",
+              "conteo": 1
+            },
+            {
+              "cargo": "Asistente de proyecto",
+              "conteo": 1
+            },
+            {
+              "cargo": "Monitor Asistente Administrativo",
+              "conteo": 1
+            }
+          ]
+        },
+        {
+          "cargo": "Analistas",
+          "frecuencia": 1,
+          "porcentaje": 1.23,
+          "color": "#dda2ec",
+          "nCargos": 1,
+          "detalle": [
+            {
+              "cargo": "Analista de laboratorio",
+              "conteo": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
       "id": "ingenieria",
       "nombre": "Ingeniería",
       "color": "#F76707",
-      "total": 57,
-      "cargosUnicos": 48,
+      "total": 70,
+      "cargosUnicos": 62,
       "items": [
         {
           "cargo": "Ingenieros/as",
-          "frecuencia": 27,
-          "porcentaje": 47.37,
+          "frecuencia": 28,
+          "porcentaje": 40.0,
           "color": "#bc4f05",
-          "nCargos": 23,
+          "nCargos": 24,
           "detalle": [
             {
               "cargo": "Ingeniero de Investigación y Desarrollo",
@@ -847,6 +1334,10 @@ const CARGOS_TORTA_DATA = {
               "conteo": 1
             },
             {
+              "cargo": "Ingeniero de desarrollo de producto",
+              "conteo": 1
+            },
+            {
               "cargo": "Ingeniero de diseño y prototipado",
               "conteo": 1
             },
@@ -857,15 +1348,112 @@ const CARGOS_TORTA_DATA = {
           ]
         },
         {
+          "cargo": "Otros cargos",
+          "frecuencia": 22,
+          "porcentaje": 31.43,
+          "color": "#ee6307",
+          "nCargos": 22,
+          "detalle": [
+            {
+              "cargo": "Aerospace Engineering Intern",
+              "conteo": 1
+            },
+            {
+              "cargo": "Agencia Espacial de Colombia - AEC",
+              "conteo": 1
+            },
+            {
+              "cargo": "Asesor Técnico",
+              "conteo": 1
+            },
+            {
+              "cargo": "Auditor técnico",
+              "conteo": 1
+            },
+            {
+              "cargo": "Contrato de Tiempo Completo",
+              "conteo": 1
+            },
+            {
+              "cargo": "Doctorado en MEMS (Sistemas Microelectromecánicos) para Recolección de Energía.",
+              "conteo": 1
+            },
+            {
+              "cargo": "Engineer",
+              "conteo": 1
+            },
+            {
+              "cargo": "Engineer Technologist – Geoelectrical & Subsurface Investigation",
+              "conteo": 1
+            },
+            {
+              "cargo": "Expert Engineer",
+              "conteo": 1
+            },
+            {
+              "cargo": "Ingénieur R&D",
+              "conteo": 1
+            },
+            {
+              "cargo": "Ingénieure/Chercheuse R&D",
+              "conteo": 1
+            },
+            {
+              "cargo": "Ingénieure/chercheuse recherche & développement",
+              "conteo": 1
+            },
+            {
+              "cargo": "Metalmecánica",
+              "conteo": 1
+            },
+            {
+              "cargo": "Metrólogo",
+              "conteo": 1
+            },
+            {
+              "cargo": "Quantum engineer",
+              "conteo": 1
+            },
+            {
+              "cargo": "R&D Engineer and PhD contract",
+              "conteo": 1
+            },
+            {
+              "cargo": "R&T/D Solar Array Engineer",
+              "conteo": 1
+            },
+            {
+              "cargo": "Research Engineer in materials for electrical applications",
+              "conteo": 1
+            },
+            {
+              "cargo": "Research Engineer in supercricitical fluids for surfaces treatment",
+              "conteo": 1
+            },
+            {
+              "cargo": "Technical Development Engineer",
+              "conteo": 1
+            },
+            {
+              "cargo": "Técnico de Laboratorio",
+              "conteo": 1
+            },
+            {
+              "cargo": "optics engineer",
+              "conteo": 1
+            }
+          ]
+        },
+        {
           "cargo": "Practicantes y estudiantes",
-          "frecuencia": 18,
-          "porcentaje": 31.58,
-          "color": "#e45f06",
-          "nCargos": 13,
+          "frecuencia": 15,
+          "porcentaje": 21.43,
+          "color": "#f9802f",
+          "nCargos": 11,
           "detalle": [
             {
               "cargo": "Practicante de Ingeniería",
-              "conteo": 4
+              "conteo": 3
             },
             {
               "cargo": "Estudiante Practicante",
@@ -881,10 +1469,6 @@ const CARGOS_TORTA_DATA = {
             },
             {
               "cargo": "Estudiante en prácticas",
-              "conteo": 1
-            },
-            {
-              "cargo": "Interno",
               "conteo": 1
             },
             {
@@ -908,48 +1492,7 @@ const CARGOS_TORTA_DATA = {
               "conteo": 1
             },
             {
-              "cargo": "Práctica Profesional - Proyecto de Vigilancia Tecnológica CubeSat",
-              "conteo": 1
-            },
-            {
               "cargo": "Prácticas Profesionales",
-              "conteo": 1
-            }
-          ]
-        },
-        {
-          "cargo": "Otros cargos",
-          "frecuencia": 7,
-          "porcentaje": 12.28,
-          "color": "#f9741b",
-          "nCargos": 7,
-          "detalle": [
-            {
-              "cargo": "Asesor Técnico",
-              "conteo": 1
-            },
-            {
-              "cargo": "Contrato de Tiempo Completo",
-              "conteo": 1
-            },
-            {
-              "cargo": "Doctorado en MEMS (Sistemas Microelectromecánicos) para Recolección de Energía.",
-              "conteo": 1
-            },
-            {
-              "cargo": "Especialista en Registro Geofísico de Pozos | Operaciones de Campo",
-              "conteo": 1
-            },
-            {
-              "cargo": "Metalmecánica",
-              "conteo": 1
-            },
-            {
-              "cargo": "Metrólogo",
-              "conteo": 1
-            },
-            {
-              "cargo": "Técnico de Laboratorio",
               "conteo": 1
             }
           ]
@@ -957,8 +1500,8 @@ const CARGOS_TORTA_DATA = {
         {
           "cargo": "Coordinación y liderazgo",
           "frecuencia": 3,
-          "porcentaje": 5.26,
-          "color": "#fa8c43",
+          "porcentaje": 4.29,
+          "color": "#fb9e60",
           "nCargos": 3,
           "detalle": [
             {
@@ -976,209 +1519,18 @@ const CARGOS_TORTA_DATA = {
           ]
         },
         {
-          "cargo": "Consultores/as",
-          "frecuencia": 1,
-          "porcentaje": 1.75,
-          "color": "#fba46a",
-          "nCargos": 1,
-          "detalle": [
-            {
-              "cargo": "Consultor Geofísico – Investigaciones Geotécnicas",
-              "conteo": 1
-            }
-          ]
-        },
-        {
           "cargo": "Asistentes y auxiliares",
-          "frecuencia": 1,
-          "porcentaje": 1.75,
+          "frecuencia": 2,
+          "porcentaje": 2.86,
           "color": "#fcbc92",
-          "nCargos": 1,
+          "nCargos": 2,
           "detalle": [
             {
               "cargo": "Asistente de Calidad y Producción",
               "conteo": 1
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "gestion_y_negocios",
-      "nombre": "Gestión y Negocios",
-      "color": "#BE4BDB",
-      "total": 40,
-      "cargosUnicos": 32,
-      "items": [
-        {
-          "cargo": "Otros cargos",
-          "frecuencia": 13,
-          "porcentaje": 32.5,
-          "color": "#8720a2",
-          "nCargos": 12,
-          "detalle": [
-            {
-              "cargo": "Talento B Senior",
-              "conteo": 2
             },
             {
-              "cargo": "Contratista",
-              "conteo": 1
-            },
-            {
-              "cargo": "Creador de Contenido Independiente",
-              "conteo": 1
-            },
-            {
-              "cargo": "Embajador de Vinculación de Aceleradora",
-              "conteo": 1
-            },
-            {
-              "cargo": "Emprendedor independiente",
-              "conteo": 1
-            },
-            {
-              "cargo": "Especialista en Gestión del Desempeño",
-              "conteo": 1
-            },
-            {
-              "cargo": "Especialista en riesgos",
-              "conteo": 1
-            },
-            {
-              "cargo": "Innovaciones y Estrategias para Logística y Cadenas de Suministro",
-              "conteo": 1
-            },
-            {
-              "cargo": "Joven Embajador",
-              "conteo": 1
-            },
-            {
-              "cargo": "Profesional Formulación de Proyectos",
-              "conteo": 1
-            },
-            {
-              "cargo": "Profesional en contenidos",
-              "conteo": 1
-            },
-            {
-              "cargo": "Talento B Junior",
-              "conteo": 1
-            }
-          ]
-        },
-        {
-          "cargo": "Practicantes y estudiantes",
-          "frecuencia": 10,
-          "porcentaje": 25.0,
-          "color": "#ab29cc",
-          "nCargos": 6,
-          "detalle": [
-            {
-              "cargo": "Practicante",
-              "conteo": 5
-            },
-            {
-              "cargo": "Practicante División Logística",
-              "conteo": 1
-            },
-            {
-              "cargo": "Practicante Profesional - Innovación y Calidad",
-              "conteo": 1
-            },
-            {
-              "cargo": "Practicante en desarrollo sostenible",
-              "conteo": 1
-            },
-            {
-              "cargo": "Practicante universitaria",
-              "conteo": 1
-            },
-            {
-              "cargo": "Práctica Estudiantil",
-              "conteo": 1
-            }
-          ]
-        },
-        {
-          "cargo": "Coordinación y liderazgo",
-          "frecuencia": 8,
-          "porcentaje": 20.0,
-          "color": "#bf4ddb",
-          "nCargos": 8,
-          "detalle": [
-            {
-              "cargo": "Cofundador y Director de Tecnología",
-              "conteo": 1
-            },
-            {
-              "cargo": "Coordinadora de Ingeniería a la n",
-              "conteo": 1
-            },
-            {
-              "cargo": "Director de riesgos",
-              "conteo": 1
-            },
-            {
-              "cargo": "Gerente de Negocios",
-              "conteo": 1
-            },
-            {
-              "cargo": "Jefe de Proyecto",
-              "conteo": 1
-            },
-            {
-              "cargo": "Líder de Proyecto EAFITHAB 1. Misión de Globo de Gran Altitud EAFIT, Global Space Balloon Challenge GSBC",
-              "conteo": 1
-            },
-            {
-              "cargo": "Líder de Proyecto de Verificación y Validación",
-              "conteo": 1
-            },
-            {
-              "cargo": "Socio y Director de Redes Sociales",
-              "conteo": 1
-            }
-          ]
-        },
-        {
-          "cargo": "Consultores/as",
-          "frecuencia": 6,
-          "porcentaje": 15.0,
-          "color": "#ce77e4",
-          "nCargos": 3,
-          "detalle": [
-            {
-              "cargo": "Auxiliar Consultor",
-              "conteo": 2
-            },
-            {
-              "cargo": "Consultor",
-              "conteo": 2
-            },
-            {
-              "cargo": "Consultor Junior",
-              "conteo": 2
-            }
-          ]
-        },
-        {
-          "cargo": "Asistentes y auxiliares",
-          "frecuencia": 3,
-          "porcentaje": 7.5,
-          "color": "#dda2ec",
-          "nCargos": 3,
-          "detalle": [
-            {
-              "cargo": "Asistente de Cuentas",
-              "conteo": 1
-            },
-            {
-              "cargo": "Asistente de proyecto",
-              "conteo": 1
-            },
-            {
-              "cargo": "Monitor Asistente Administrativo",
+              "cargo": "Auxiliar Research Engineer",
               "conteo": 1
             }
           ]
