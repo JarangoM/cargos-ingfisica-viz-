@@ -5,9 +5,11 @@
 // directamente en el navegador, sin servidor). Lee los datos de la constante
 // global SECTORES_DATA definida en sectores_datos.js.
 //
-// Matriz de gráficos de torta (filas = periodo, columnas = trabajo 1/2/3) con
-// colores de sector consistentes en toda la visualización y una leyenda fija
-// en la parte inferior.
+// Matriz de gráficos de torta (filas = periodo, columnas = trabajo 1..5) con
+// colores de sector consistentes en toda la visualización, una leyenda fija
+// en la parte inferior, y un panel lateral que se abre al hacer clic en un
+// sector para mostrar los empleadores asociados a ese sector, en ese
+// trabajo, periodo y ámbito específicos.
 // =============================================================================
 
 (function () {
@@ -74,7 +76,8 @@
 
   const GRIS_ATENUADO = "var(--borde)";
 
-  function renderPie(svg, cx, cy, r, items, total, filtro) {
+  // contexto = { ambito, periodoId, periodoLabel, trabajo }
+  function renderPie(svg, cx, cy, r, items, total, filtro, contexto) {
     let anguloActual = 0;
     items.forEach((it) => {
       const anguloSlice = (it.frecuencia / total) * 360;
@@ -86,9 +89,14 @@
       const esSeleccionado = !!filtro && it.categoria === filtro;
       const estaAtenuado = !!filtro && !esSeleccionado;
       const colorRelleno = estaAtenuado ? GRIS_ATENUADO : colorDeCategoria(it.categoria);
+      const esActivoEnPanel = panelActivo &&
+        panelActivo.ambito === contexto.ambito &&
+        panelActivo.periodoId === contexto.periodoId &&
+        panelActivo.trabajo === contexto.trabajo &&
+        panelActivo.categoria === it.categoria;
 
       // Al resaltar un sector, su slice se "explota" levemente hacia afuera
-      // para que salte a la vista en los 12 gráficos a la vez.
+      // para que salte a la vista en los gráficos de toda la matriz a la vez.
       const desplazamiento = esSeleccionado ? polarAPunto(0, 0, 7, medio) : { x: 0, y: 0 };
       const transformAttr = esSeleccionado ? `translate(${desplazamiento.x} ${desplazamiento.y})` : "";
 
@@ -96,14 +104,15 @@
       // longitud cero: inicio y fin del path coinciden y no se dibuja nada.
       // En ese caso se dibuja un círculo completo en su lugar.
       const esCirculoCompleto = anguloSlice >= 359.99;
+      let claseSlice = "slice" + (esSeleccionado ? " resaltado" : "") + (esActivoEnPanel ? " activo" : "");
       const path = svgEl(esCirculoCompleto ? "circle" : "path", esCirculoCompleto
-        ? { cx, cy, r, fill: colorRelleno, stroke: "var(--panel)", "stroke-width": "1.5", class: "slice" }
+        ? { cx, cy, r, fill: colorRelleno, stroke: "var(--panel)", "stroke-width": "1.5", class: claseSlice }
         : {
             d: arcoSlicePath(cx, cy, r, anguloInicio, anguloFin),
             fill: colorRelleno,
             stroke: "var(--panel)",
             "stroke-width": esSeleccionado ? "2.5" : "1.5",
-            class: "slice" + (esSeleccionado ? " resaltado" : ""),
+            class: claseSlice,
           });
       if (estaAtenuado) path.setAttribute("opacity", "0.55");
       if (transformAttr) path.setAttribute("transform", transformAttr);
@@ -112,11 +121,19 @@
       path.addEventListener("mousemove", (e) => {
         mostrarTooltip(
           `<div class="tt-sector">${it.sector}</div>` +
-            `<div>${it.frecuencia} egresado${it.frecuencia === 1 ? "" : "s"} · ${it.porcentaje}%</div>`,
+            `<div>${it.frecuencia} egresado${it.frecuencia === 1 ? "" : "s"} · ${it.porcentaje}%</div>` +
+            `<div class="tt-pista">Clic para ver empleadores (${it.empleadores.length})</div>`,
           e
         );
       });
       path.addEventListener("mouseleave", ocultarTooltip);
+      path.addEventListener("click", () => {
+        ocultarTooltip();
+        filtroActual = it.categoria;
+        selectFiltro.value = it.categoria;
+        abrirPanelEmpleadores(contexto, it);
+        renderTodo();
+      });
 
       // Etiqueta directa: siempre para el sector resaltado (aunque el slice
       // sea pequeño, con línea guía hacia afuera); si no hay filtro, solo
@@ -164,7 +181,7 @@
     });
   }
 
-  function crearTarjetaGrafico(trabajoData, tituloTop, tituloBottom, filtro) {
+  function crearTarjetaGrafico(trabajoData, tituloTop, tituloBottom, filtro, contexto) {
     const tarjeta = document.createElement("div");
     tarjeta.className = "tarjeta-grafico";
 
@@ -186,12 +203,12 @@
       return tarjeta;
     }
 
-    const size = 190;
-    const r = 78;
+    const size = 150;
+    const r = 60;
     const cx = size / 2;
     const cy = size / 2;
     const svg = svgEl("svg", { width: size, height: size, viewBox: `0 0 ${size} ${size}` });
-    renderPie(svg, cx, cy, r, trabajoData.items, trabajoData.total, filtro);
+    renderPie(svg, cx, cy, r, trabajoData.items, trabajoData.total, filtro, contexto);
     tarjeta.appendChild(svg);
 
     if (filtro && !trabajoData.items.some((it) => it.categoria === filtro)) {
@@ -220,18 +237,20 @@
       grupo.className = "grupo-periodo";
 
       const h2 = document.createElement("h2");
-      h2.innerHTML = `Sectores por trabajo — ${periodo.label} <span class="n-periodo">(${nombreAmbito})</span>`;
+      h2.innerHTML = `Sectores por trabajo — ${periodo.label} <span class="n-periodo">(${nombreAmbito} · ${periodo.total_egresados} egresados en el intervalo)</span>`;
       grupo.appendChild(h2);
 
       const fila = document.createElement("div");
       fila.className = "fila-graficos";
 
       periodo.trabajos.forEach((trabajo) => {
+        const contexto = { ambito, periodoId: periodo.id, periodoLabel: periodo.label, trabajo: trabajo.trabajo };
         const tarjeta = crearTarjetaGrafico(
           trabajo,
-          `Sectores trabajo ${trabajo.trabajo}`,
+          `Trabajo ${trabajo.trabajo}`,
           trabajo.total ? `n = ${trabajo.total}` : "",
-          filtro
+          filtro,
+          contexto
         );
         fila.appendChild(tarjeta);
       });
@@ -279,6 +298,97 @@
   }
 
   // =============================================================================
+  // PANEL LATERAL DE EMPLEADORES
+  // -----------------------------------------------------------------------------
+  // Se abre al hacer clic en un sector de cualquier gráfico. Muestra los
+  // empleadores de ESE sector, en ESE trabajo/periodo/ámbito específicos
+  // (no mezcla empleadores de otros gráficos de la matriz).
+  // =============================================================================
+
+  const panelEmpleadores = document.getElementById("panel-empleadores");
+  const fondoPanel = document.getElementById("fondo-panel");
+  const contenedorPrincipal = document.getElementById("contenedor-principal");
+  const panelCuerpo = document.getElementById("panel-cuerpo");
+  const panelOrdenSelect = document.getElementById("panel-orden-select");
+
+  let panelActivo = null; // { ambito, periodoId, trabajo, categoria } — para resaltar el slice activo
+  let empleadoresActuales = [];
+  let ordenActual = "desc";
+
+  function renderEmpleadores() {
+    panelCuerpo.innerHTML = "";
+    if (!empleadoresActuales.length) {
+      const vacio = document.createElement("div");
+      vacio.id = "panel-vacio";
+      vacio.textContent = "No hay empleadores registrados para este sector en este grupo.";
+      panelCuerpo.appendChild(vacio);
+      return;
+    }
+    const lista = empleadoresActuales.slice();
+    if (ordenActual === "desc") lista.sort((a, b) => b.frecuencia - a.frecuencia);
+    else if (ordenActual === "asc") lista.sort((a, b) => a.frecuencia - b.frecuencia);
+    else lista.sort((a, b) => a.nombre.localeCompare(b.nombre, "es"));
+
+    lista.forEach((emp) => {
+      const fila = document.createElement("div");
+      fila.className = "fila-empleador";
+      const nombre = document.createElement("span");
+      nombre.className = "nombre-empleador";
+      nombre.textContent = emp.nombre;
+      nombre.title = emp.nombre;
+      const conteo = document.createElement("span");
+      conteo.className = "conteo-empleador";
+      conteo.textContent = emp.frecuencia;
+      fila.appendChild(nombre);
+      fila.appendChild(conteo);
+      panelCuerpo.appendChild(fila);
+    });
+  }
+
+  function abrirPanelEmpleadores(contexto, item) {
+    panelActivo = {
+      ambito: contexto.ambito,
+      periodoId: contexto.periodoId,
+      trabajo: contexto.trabajo,
+      categoria: item.categoria,
+    };
+    empleadoresActuales = item.empleadores || [];
+
+    document.getElementById("panel-nombre-sector").textContent = item.sector;
+    document.getElementById("panel-punto").style.background = colorDeCategoria(item.categoria);
+    const nombreAmbito = contexto.ambito === "nacional" ? "Nacional" : "Internacional";
+    document.getElementById("panel-subtitulo").textContent =
+      `${contexto.periodoLabel} · Trabajo ${contexto.trabajo} · ${nombreAmbito}`;
+    document.getElementById("panel-resumen").innerHTML =
+      `<strong>${item.frecuencia}</strong> egresado${item.frecuencia === 1 ? "" : "s"} (${item.porcentaje}%) en ` +
+      `<strong>${empleadoresActuales.length}</strong> empleador${empleadoresActuales.length === 1 ? "" : "es"} distinto${empleadoresActuales.length === 1 ? "" : "s"}`;
+
+    renderEmpleadores();
+
+    panelEmpleadores.classList.add("abierto");
+    fondoPanel.classList.add("visible");
+    contenedorPrincipal.classList.add("con-panel");
+  }
+
+  function cerrarPanelEmpleadores() {
+    panelActivo = null;
+    panelEmpleadores.classList.remove("abierto");
+    fondoPanel.classList.remove("visible");
+    contenedorPrincipal.classList.remove("con-panel");
+    renderTodo();
+  }
+
+  document.getElementById("cerrar-panel").addEventListener("click", cerrarPanelEmpleadores);
+  fondoPanel.addEventListener("click", cerrarPanelEmpleadores);
+  panelOrdenSelect.addEventListener("change", () => {
+    ordenActual = panelOrdenSelect.value;
+    renderEmpleadores();
+  });
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && panelEmpleadores.classList.contains("abierto")) cerrarPanelEmpleadores();
+  });
+
+  // =============================================================================
   // FILTRO DE SECTOR — la lista desplegable centra la atención en un sector
   // =============================================================================
 
@@ -310,6 +420,10 @@
     document.querySelectorAll(".tab-btn").forEach((b) => {
       b.classList.toggle("activo", b.dataset.ambito === ambito);
     });
+    // Cambiar de ámbito invalida el contexto del panel abierto (pertenece
+    // al otro ámbito), así que se cierra para evitar mostrar datos que ya
+    // no corresponden a lo que se ve en la matriz.
+    if (panelActivo && panelActivo.ambito !== ambito) cerrarPanelEmpleadores();
     renderTodo();
   }
 
